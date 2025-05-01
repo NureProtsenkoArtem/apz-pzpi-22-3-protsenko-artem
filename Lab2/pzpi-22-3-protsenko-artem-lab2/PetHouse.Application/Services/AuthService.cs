@@ -80,8 +80,7 @@ public class AuthService : IAuthService
       {
          throw new ApiException("Incorrect password", 400);
       }
-
-      // Ensure the user has verified their email.
+      
       if (!candidate.IsVerified)
       {
          throw new ApiException("User doesn't verify his account", 403);

@@ -10,4 +10,6 @@ public interface IRepository<TEntity> where TEntity : class
    Task Update(TEntity item);
    Task<Guid> DeleteAsync(Guid id);
    Task<List<TEntity>> GetByPredicate(Expression<Func<TEntity, bool>> predicate);
+   Task<int> CountAsync();
+   Task DeleteRange(IEnumerable<TEntity> entities);
 }

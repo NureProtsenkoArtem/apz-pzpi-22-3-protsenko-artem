@@ -12,11 +12,13 @@ public class PetService : GenericService<Pet>, IPetService
 {
    private readonly IUnitOfWork _unitOfWork;
    private readonly IStorageService _storageService;
+   private readonly ISystemLogService _systemLogService;
 
-   public PetService(IUnitOfWork unitOfWork,IStorageService storageService) : base(unitOfWork)
+   public PetService(IUnitOfWork unitOfWork,IStorageService storageService, ISystemLogService systemLogService) : base(unitOfWork)
    {
       _unitOfWork = unitOfWork;
       _storageService = storageService;
+      _systemLogService = systemLogService;
    }
 
    public async Task<Guid> CreatePet(Guid userId,string petName, string petBreed, double petWeight, double caloriesPerDay, ActivityLevel activityLevel)
@@ -25,11 +27,13 @@ public class PetService : GenericService<Pet>, IPetService
       var user = await userRepository.FindById(userId);
       if (user == null)
       {
+         await _systemLogService.AddLogAsync("Pet Creation Failed", $"IUser wasn't found");
          throw new ApiException("User wasn't found", 404);
       }
       
       if (!Enum.IsDefined(typeof(ActivityLevel), activityLevel))
       {
+         await _systemLogService.AddLogAsync("Pet Creation Failed", $"Invalid activity level");
          throw new ApiException("Invalid activity level", 400);
       }
 
@@ -53,7 +57,7 @@ public class PetService : GenericService<Pet>, IPetService
       await Repository.Add(pet);
       
       await _unitOfWork.SaveChangesAsync();
-      
+      await _systemLogService.AddLogAsync("Pet Created", $"Pet created with ID {pet.PetId}");
       return pet.PetId;
    }
 
@@ -62,11 +66,17 @@ public class PetService : GenericService<Pet>, IPetService
       var pet = await Repository.FindById(petId);
 
       if (pet == null)
+      {
+         await _systemLogService.AddLogAsync("Pet Update Failed", $"Invalid activity level {pet.PetId}");
          throw new ApiException("Pet wasn't found", 404);
+      }
+
 
       if (!Enum.IsDefined(typeof(ActivityLevel), activityLevel))
       {
+         await _systemLogService.AddLogAsync("Pet Update Failed", $"Invalid activity level {pet.PetId}");
          throw new ApiException("Invalid activity level", 400);
+         
       }
       
       pet.PetName = petName;
@@ -77,6 +87,7 @@ public class PetService : GenericService<Pet>, IPetService
 
       await Repository.Update(pet);
       await _unitOfWork.SaveChangesAsync();
+      await _systemLogService.AddLogAsync("Pet Created", $"Pet created with ID {pet.PetId}");
       return pet;
    }
 }

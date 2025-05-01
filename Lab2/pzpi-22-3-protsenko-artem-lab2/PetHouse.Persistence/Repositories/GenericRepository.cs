@@ -76,5 +76,17 @@ public class GenericRepository<T> : IRepository<T> where T : class
 
       return await _dbSet.Where(predicate).ToListAsync();
    }
-   
+   public async Task<int> CountAsync()
+   {
+      return await _dbSet.CountAsync();
+   }
+
+   public async Task DeleteRange(IEnumerable<T> entities)
+   {
+      if (entities == null)
+         throw new ArgumentNullException(nameof(entities));
+
+      _dbSet.RemoveRange(entities);
+      await _context.SaveChangesAsync();
+   }
 }

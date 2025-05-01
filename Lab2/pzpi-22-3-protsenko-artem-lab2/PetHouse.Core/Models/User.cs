@@ -16,4 +16,5 @@ public class User
    public bool IsVerified { get; set; } = false;
    public List<Pet> UserPets { get; set; } = [];
    public List<Device> UserDevices { get; set; } = [];
+   public List<Notification> UserNotifications { get; set; } = [];
 }

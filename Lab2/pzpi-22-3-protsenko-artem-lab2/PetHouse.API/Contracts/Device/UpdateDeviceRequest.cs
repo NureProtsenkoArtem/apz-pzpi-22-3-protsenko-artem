@@ -7,5 +7,6 @@ public class UpdateDeviceRequest
    public DeviceStatus DeviceStatus { get; set; }
    public FeedingMode FeedingMode { get; set; }
    public bool RecognitionEnabled { get; set; }
+   public double MealsWeight { get; set; }
    public bool CameraEnabled { get; set; }
 }

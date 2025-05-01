@@ -4,4 +4,6 @@ public enum Role
 {
    User = 1,
    Admin,
+   DbAdmin,
+   ApplicationAdmin,
 }

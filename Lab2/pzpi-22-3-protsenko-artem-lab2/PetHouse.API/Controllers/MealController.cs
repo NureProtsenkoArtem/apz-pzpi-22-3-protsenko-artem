@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetHouse.API.Contracts.Meal;
+using PetHouse.Application.Contracts.Meal;
 using PetHouse.Application.Interfaces.Services;
 using PetHouse.Core.Enums.Meal;
+using PetHouse.Core.Models;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace PetHouse.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class MealController : ControllerBase
 {
    private readonly IMealService _mealService;
@@ -76,11 +77,21 @@ public class MealController : ControllerBase
       return Ok(meals);
    }
 
-   [HttpPatch("change-status/{mealId:Guid}")]
+   [HttpPost("change-status/{mealId:Guid}")]
    [SwaggerOperation("Change meal status")]
    public async Task<IActionResult> ChangeStatus([FromRoute] Guid mealId, [FromBody] ChangeStatusRequest request)
    {
       await _mealService.ChangeStatus(mealId, request.MealStatus, request.caloriesConsumed);
       return Ok(new { Message = "Meal status successfully updated" });
+   }
+
+   [HttpGet("user/{userId:Guid}")]
+   [SwaggerOperation("Get pet meals by userId")]
+   [ProducesResponseType(200, Type = typeof(List<MealDto>))]
+   public async Task<IActionResult> GetByUserId([FromRoute] Guid userId)
+   {
+      var meals = await _mealService.GetByUserId(userId);
+
+      return Ok(meals);
    }
 }

@@ -11,6 +11,7 @@
     public string Model { get; set; }
     public DeviceStatus DeviceStatus { get; set; } = DeviceStatus.Offline;
     public FeedingMode FeedingMode { get; set; } = FeedingMode.Pause;
+    public double MealWeight { get; set; }
     public bool RecognitionEnabled { get; set; } = false;
     public bool CameraEnabled { get; set; } = false;
  }

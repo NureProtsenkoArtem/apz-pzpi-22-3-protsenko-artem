@@ -42,6 +42,7 @@ public class UserController : ControllerBase
    [SwaggerOperation("Get all users")]
    public async Task<IActionResult> GetAll()
    {
+      
       var users = await _userService.GetAll();
       return Ok(users);
    }
@@ -70,4 +71,6 @@ public class UserController : ControllerBase
       await _userService.ChangeUserPassword(request.UserId, request.OldPassword, request.NewPassword);
       return Ok(new { Message = "Password successfully changed" });
    }
+   
+   
 }

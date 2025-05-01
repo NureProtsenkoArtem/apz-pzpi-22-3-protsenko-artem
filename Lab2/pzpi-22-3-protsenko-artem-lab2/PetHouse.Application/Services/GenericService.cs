@@ -43,6 +43,7 @@ public class GenericService<TEntity> : IGenericService<TEntity> where TEntity : 
 
       return entity;
    }
+   
 
    public Task<List<TEntity>> GetAll()
    {

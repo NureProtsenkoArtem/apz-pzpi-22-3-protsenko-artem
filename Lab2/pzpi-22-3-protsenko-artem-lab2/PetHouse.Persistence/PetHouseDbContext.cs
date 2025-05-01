@@ -13,8 +13,11 @@ namespace PetHouse.Persistence
       public DbSet<User> Users { get; set; }
       public DbSet<Pet> Pets { get; set; }
       public DbSet<Meal> Meals { get; set; }
-      public DbSet<Device> Devices { get; set; }
+      public DbSet<Device?> Devices { get; set; }
       public DbSet<HealthAnalysis> HealthAnalyses { get; set; }
+      public DbSet<SystemLog> SystemLogs { get; set; }
+      public DbSet<Notification> Notifications { get; set; }
+      
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {

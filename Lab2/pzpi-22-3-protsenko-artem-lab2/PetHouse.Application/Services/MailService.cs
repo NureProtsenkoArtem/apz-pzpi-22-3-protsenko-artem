@@ -8,10 +8,12 @@ namespace PetHouse.Application.Services;
 
 public class MailService : IMailService
 {
+   private readonly ISystemLogService _systemLogService;
    private readonly SenderSettings _senderSettings;
 
-   public MailService(IOptions<SenderSettings> senderSettings)
+   public MailService(IOptions<SenderSettings> senderSettings, ISystemLogService systemLogService)
    {
+      _systemLogService = systemLogService;
       _senderSettings = senderSettings.Value;
    }
 
@@ -58,6 +60,7 @@ public class MailService : IMailService
       }
       finally
       {
+         await _systemLogService.AddLogAsync("Send email", $"Send email of type {sendType.ToString()}");
          await smtp.DisconnectAsync(true);
       }
    }

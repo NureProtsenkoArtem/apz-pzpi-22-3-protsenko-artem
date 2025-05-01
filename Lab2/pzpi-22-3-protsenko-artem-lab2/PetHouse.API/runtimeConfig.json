@@ -1,0 +1,7 @@
+{
+  "DynamicConfiguration": {
+    "AccessSecretKey": "MyExtraMegaSuperKeyThatYouCanUnderstand11212121",
+    "RefreshSecretKey": "MyExtraMegaSuperRefreshKeyThatYouCanUnderstand11112112",
+    "EncryptionKey": "super-secure-key-12345678921210"
+  }
+}

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PetHouse.Core\PetHouse.Core.csproj" />
+      <ProjectReference Include="..\PetHouse.Persistence\PetHouse.Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
+      <PackageReference Include="AWSSDK.S3" Version="3.7.410.6" />
+      <PackageReference Include="MailKit" Version="4.9.0" />
+      <PackageReference Include="PdfSharp" Version="6.1.1" />
+      <PackageReference Include="QRCoder" Version="1.6.0" />
+      <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.4" />
+      <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="9.0.4" />
+    </ItemGroup>
+
+</Project>

@@ -9,7 +9,6 @@ namespace PetHouse.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class DeviceController : ControllerBase
 {
    private readonly IDeviceService _deviceService;
@@ -30,10 +29,10 @@ public class DeviceController : ControllerBase
 
    [HttpGet("{deviceId:Guid}")]
    [SwaggerOperation("Get device by id")]
-   [Authorize]
    public async Task<IActionResult> GetById(Guid deviceId)
    {
       var device = await _deviceService.GetById(deviceId);
+
 
       return Ok(device);
    }
@@ -57,14 +56,22 @@ public class DeviceController : ControllerBase
       return Ok(deviceId);
    }
 
-   [HttpPatch("{deviceId:Guid}")]
+   [HttpPut("{deviceId:Guid}")]
    [SwaggerOperation("Update device model")]
-   [Authorize]
    public async Task<IActionResult> UpdateDevice([FromRoute] Guid deviceId, [FromBody] UpdateDeviceRequest request)
    {
       var deviceUpdateResult = await _deviceService.UpdateDevice(deviceId, request.DeviceStatus, request.FeedingMode,
-         request.RecognitionEnabled, request.CameraEnabled);
-      
+         request.RecognitionEnabled, request.CameraEnabled, request.MealsWeight);
+
       return Ok(deviceUpdateResult);
+   }
+
+   [HttpPut("change-meal-weight")]
+   [SwaggerOperation("Change meal weight in device")]
+   public async Task<IActionResult> ChangeMealWeight(Guid deviceId, double mealWeight)
+   {
+      await _deviceService.ChangeMealWeight(deviceId, mealWeight);
+
+      return Ok( new { Message = "Device meal weight successfully updated" });
    }
 }

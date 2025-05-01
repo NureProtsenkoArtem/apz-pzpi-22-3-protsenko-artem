@@ -12,10 +12,12 @@ public class StorageService : IStorageService
 {
    private readonly IAmazonS3 _s3Client;
    private readonly AwsOptions _options;
+   private readonly ISystemLogService _systemLogService;
 
-   public StorageService(IAmazonS3 s3Client, IOptions<AwsOptions> options)
+   public StorageService(IAmazonS3 s3Client, IOptions<AwsOptions> options, ISystemLogService systemLogService)
    {
       _s3Client = s3Client;
+      _systemLogService = systemLogService;
       _options = options.Value;
    }
 
@@ -42,19 +44,25 @@ public class StorageService : IStorageService
          {
             return $"https://pethousebucket.s3.eu-north-1.amazonaws.com/{request.Key}";
          }
-
+         
          // If upload fails, throw an exception.
          throw new Exception("File upload failed");
       }
       catch (AmazonS3Exception e)
       {
+         await _systemLogService.AddLogAsync("Upload file failed", $"File upload exection {e.Message}");
          // Handle S3-specific errors and wrap them in a custom API exception.
          throw new ApiException(e.Message, 500);
       }
       catch (Exception e)
       {
+         await _systemLogService.AddLogAsync("Upload file failed", $"File upload exection {e.Message}");
          // Handle generic exceptions and wrap them in a custom API exception.
          throw new ApiException(e.Message, 500);
+      }
+      finally
+      {
+         await _systemLogService.AddLogAsync("Upload file", $"File successfully upload");
       }
    }
 }
