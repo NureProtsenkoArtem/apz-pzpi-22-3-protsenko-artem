@@ -28,8 +28,978 @@
 
 
 Харків 2025
-ІСТОРІЯ ЗМІН
+1 ІСТОРІЯ ЗМІН
 
 №	Дата	Версія звіту	Опис змін та виправлень
 1	14.04.2025	0.1	Створено розділ «Історія змін», створено титульний лист. Додано базову структуру серверної частини для доробки
+2	18.04.2025	0.1	Створено розділ «Опис виконаної роботи» 
+3	22.04.2025	0.1	Створено додаток Б, В.
+4	25.04.2025	0.1	Створено відеозапис та наведено в додатку А.
+5	26.04.2025	0.1	Створено розділ «Висновки»
 
+
+2 ХІД РОБОТИ
+
+Метою даної лабораторної роботи є втілення функцій бізнес логіки та функцій адміністрування системи.
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+До виконаної роботи було створено відеозвіт, посилання на який наведено у додатку А.
+При розробці бізнес логіки для програмної системи для годування домашніх тварин було реалізовано функції адаптивного годування на основі параметрів тварини, функція повідомлення користувача про залишок корму на певну кількість годувань та реалізація функції аналізу здоров’я тварини  на основі харчових звичок, для цього застосовувалися формули розрахунку стандартного відхилення калорійності раціону та коефіцієнта варіації, що дозволило надавати рекомендації щодо коригування раціону годування. Було створення відповідні діаграми для загального опису системи та опису бізнес логіки в системі. Дані діаграми наведені в додатку Б.
+Також було реалізовано функції адміністрації програмної системи для автоматизації годування домашніх тварин, а саме було розроблено функціональність для адміністратора системи, загального адміністратора та адміністратора бази даних. Для адміністратора бази даних було розроблено функціональність та відповідні маршрути для створення  та відновлення резервних копій системи та перегляд стану бази даних. 
+Для адміністратора системи було розроблено функціональність та відповідні маршрути перегляду журналу системних подій та  видалення старих подій, перегляд стану сервера, перегляд та зміна конфігурації серверу.
+Для загального адміністратора було створено функціональність та відповідних маршрут для зміни ролей користувачів в системі.
+Код функцій бізнес логіки та адміністрування системи наведено в додатку В.
+
+ 
+ВИСНОВКИ
+
+У ході лабораторного заняття було реалізовано ключові функції бізнес-логіки та адміністративного керування системою.
+ 
+ДОДАТОК А
+Відеозапис
+
+Відеозапис презентації результатів лабораторної роботи: https://youtu.be/nKy5_AURJgQ
+
+Хронологічний опис відеозапису:
+00:00 Привітання. Доповідач вітається, розповідає про загальну мету лабораторної роботи та коротко окреслює, які функції були реалізовані.
+00:32 Функції бізнес логіки. Створення адаптивного годування. Пояснюється реалізація алгоритму, що визначає обсяг порції для тварини на основі ваги тварини та параметрів активності.
+03:25 Функції бізнес логіки. Аналіз здоров’я тварини на  основі харчових звичок. Розглянуто функцію, яка прогнозує середнє споживання калорій на основі історичних даних, що дозволяє виявляти можливі відхилення у поведінці тварини.
+06:36 Функції адміністрування бази даних. Показано функціонал перевірки статусу підключення до бази даних, створення резевних копій бази даних та відновлення бази даних.
+09:25 Функції адміністрування системи. Демонструються можливості перегляду та керування параметрами конфігурації, перегляду та видалення журналу системних подій.
+12:09 Функції адміністрування користувачів. Пояснюється реалізація функціоналу призначення ролей користувачам.
+12:56 Висновки. Підбивається підсумок виконаної роботи.
+ 
+ДОДАТОК Б
+Графічні матеріали
+
+ 
+Рисунок Б.1 – ER діаграма даних (Нотація вороняча лапка)
+
+ 
+Рисунок Б.2 – UML діаграма прецедентів
+
+ 
+Рисунок Б.3 – UML діаграма прецендентів
+
+ 
+Рисунок Б.4 – UML діаграма діяльності для функції аналізу здоров’я тварини на основі харчових звичок
+ 
+Рисунок Б.5 – Діаграма діяльності для функції додавання годування
+
+
+ 
+ДОДАТОК В
+Програмний код
+
+В.1 Функція бізнес логіки. Створення адаптивного годування
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/MealService.cs
+
+   1: using AutoMapper;
+   2: using PetHouse.Application.Contracts.Meal;
+   3: using PetHouse.Application.Helpers;
+   4: using PetHouse.Application.Interfaces.Services;
+   5: using PetHouse.Core.Enums.Meal;
+   6: using PetHouse.Core.Enums.Pet;
+   7: using PetHouse.Core.Models;
+   8: using PetHouse.Persistence.Interfaces;
+   9:
+  10: namespace PetHouse.Application.Services;
+  11:
+  12: public class MealService : GenericService<Meal>, IMealService
+  13: {
+  14:    private readonly IUnitOfWork _unitOfWork;
+  15:    private readonly IMapper _mapper;
+  16:    private readonly ISystemLogService _systemLogService;
+  17:    private readonly IDeviceService _deviceService;
+  18:    private readonly IUserService _userService;
+  19:    private readonly INotificationService _notificationService;
+  20:
+  21:    public MealService(IUnitOfWork unitOfWork, IMapper mapper,
+  22:       ISystemLogService systemLogService, IUserService userService,
+  23:       INotificationService notificationService, IDeviceService deviceService)
+  24:       : base(unitOfWork)
+  25:    {
+  26:       _unitOfWork = unitOfWork;
+  27:       _mapper = mapper;
+  28:       _systemLogService = systemLogService;
+  29:       _userService = userService;
+  30:       _notificationService = notificationService;
+  31:       _deviceService = deviceService;
+  32:    }
+  33:
+  34:    // Adds a new meal for a pet.
+  35:    // - Calculates calories per meal based on adaptive adjustment or portion size.
+  36:    // - Stores meal details in the database.
+  37:    // - Returns the ID of the newly added meal.
+  38:    public async Task<Guid> AddMeal(Guid petId, double portionSize, DateTime startTime, bool adaptiveAdjustment,
+  39:       string foodType, bool isDaily, double calorificValue)
+  40:    {
+  41:       if (calorificValue <= 0)
+  42:       {
+  43:          throw new ApiException("Calorific value cannot be less or equals 0", 400);
+  44:       }
+  45:
+  46:       double caloriesPerMeal = 0.0;
+  47:
+  48:       var petRepository = _unitOfWork.Repository<Pet>();
+  49:
+  50:       var pet = await petRepository.FindById(petId);
+  51:
+  52:       if (pet == null)
+  53:          throw new ApiException("Pet wasn't found", 404);
+  54:
+  55:       var user = await _userService.GetById(pet.UserId);
+  56:
+  57:       if (user == null)
+  58:          throw new ApiException("User wasn't found", 404);
+  59:
+  60:       var device = await _deviceService.GetByUserId(user.UserId);
+  61:
+  62:       if (device == null)
+  63:          throw new ApiException("Device wasn't found", 404);
+  64:
+  65:
+  66:       if (adaptiveAdjustment)
+  67:       {
+  68:          caloriesPerMeal = CalculateCaloriesPerDay(pet);
+  69:          portionSize = Math.Round(caloriesPerMeal / calorificValue * 100);
+  70:       }
+  71:       else
+  72:       {
+  73:          caloriesPerMeal = CalculateCaloriesPerMeal(portionSize, calorificValue);
+  74:       }
+  75:
+  76:       var meal = new Meal
+  77:       {
+  78:          MealId = Guid.NewGuid(),
+  79:          PetId = petId,
+  80:          AdaptiveAdjustment = adaptiveAdjustment,
+  81:          CaloriesPerMeal = caloriesPerMeal,
+  82:          FoodType = foodType,
+  83:          IsDaily = isDaily,
+  84:          MealStatus = MealStatus.Scheduled,
+  85:          PortionSize = portionSize,
+  86:          CalorificValue = calorificValue,
+  87:          StartTime = startTime.ToUniversalTime(),
+  88:       };
+  89:
+  90:       await Repository.Add(meal);
+  91:
+  92:       if (device.MealWeight < portionSize)
+  93:       {
+  94:          await _notificationService.CreateNotification(user.UserId, "Наповнить годівницю кормом");
+  95:       }
+  96:       else if (device.MealWeight < portionSize * 2)
+  97:       {
+  98:          await _notificationService.CreateNotification(user.UserId, "Залишилося корму на 1 годування");
+  99:       }
+ 100:
+ 101:       await _unitOfWork.SaveChangesAsync();
+ 102:       await _systemLogService.AddLogAsync("Meal Created", $"Add meal {meal.MealId}");
+ 103:
+ 104:       return meal.MealId;
+ 105:    }
+ 106:
+ 107:    // Calculates the number of calories per meal based on portion size and calorific value.
+ 108:    public double CalculateCaloriesPerMeal(double portionSize, double calorificValue, int divider = 100)
+ 109:    {
+ 110:       return (portionSize * calorificValue) / divider;
+ 111:    }
+ 112:
+ 113:    // Updates an existing meal.
+ 114:    // - Updates meal details including portion size, calories consumed, and status.
+ 115:    // - Recalculates calories per meal if adaptive adjustment is enabled.
+ 116:    // - Saves the updated meal to the database.
+ 117:    public async Task<Meal> UpdateMeal(Guid mealId, double portionSize, DateTime startTime,
+ 118:       double caloriesConsumed, MealStatus mealStatus, bool adaptiveAdjustment,
+ 119:       string foodType, bool isDaily, double calorificValue)
+ 120:    {
+ 121:       double caloriesPerMeal = 0.0;
+ 122:
+ 123:       var meal = await Repository.FindById(mealId);
+ 124:
+ 125:       if (meal == null)
+ 126:          throw new ApiException("Meal wasn't found", 404);
+ 127:
+ 128:       if (adaptiveAdjustment)
+ 129:       {
+ 130:          var petRepository = _unitOfWork.Repository<Pet>();
+ 131:
+ 132:          var pet = await petRepository.FindById(meal.PetId);
+ 133:
+ 134:          caloriesPerMeal = CalculateCaloriesPerDay(pet);
+ 135:          portionSize = Math.Round(caloriesPerMeal / calorificValue * 100);
+ 136:       }
+ 137:       else
+ 138:       {
+ 139:          caloriesPerMeal = CalculateCaloriesPerMeal(portionSize, calorificValue);
+ 140:       }
+ 141:
+ 142:       meal.PortionSize = portionSize;
+ 143:       meal.StartTime = startTime;
+ 144:       meal.CaloriesPerMeal = caloriesPerMeal;
+ 145:       meal.CaloriesConsumed = caloriesConsumed;
+ 146:       meal.AdaptiveAdjustment = adaptiveAdjustment;
+ 147:       meal.FoodType = foodType;
+ 148:       meal.MealStatus = mealStatus;
+ 149:       meal.CalorificValue = calorificValue;
+ 150:       meal.IsDaily = isDaily;
+ 151:
+ 152:       await Repository.Update(meal);
+ 153:       await _unitOfWork.SaveChangesAsync();
+ 154:       await _systemLogService.AddLogAsync("Meal updated", $"updated meal {meal.MealId}");
+ 155:       return meal;
+ 156:    }
+ 157:
+ 158:    // Calculates the number of calories required per day for a pet.
+ 159:    // - Uses the pet's weight and activity level to compute the Resting Energy Requirement (RER).
+ 160:    public double CalculateCaloriesPerDay(Pet pet)
+ 161:    {
+ 162:       if (pet.PetWeight <= 0)
+ 163:          throw new ApiException("Invalid pet weight", 400);
+ 164:
+ 165:       // Calculate RER (Resting Energy Requirement)
+ 166:       double rer = 70 * Math.Pow(pet.PetWeight, 0.75);
+ 167:
+ 168:       double activityFactor = pet.ActivityLevel switch
+ 169:       {
+ 170:          ActivityLevel.Low => 1.2,
+ 171:          ActivityLevel.Moderate => 1.5,
+ 172:          ActivityLevel.High => 1.8,
+ 173:          _ => 1.2
+ 174:       };
+ 175:
+ 176:       // Calculate calories per day considering the activity factor
+ 177:       double caloriesPerMeal = rer * activityFactor;
+ 178:
+ 179:       return caloriesPerMeal;
+ 180:    }
+ 181:
+ 182:    // Retrieves all meals associated with a specific pet ID.
+ 183:    // - Returns an empty list if no meals are found.
+ 184:    public async Task<List<Meal>> GetByPetId(Guid petId)
+ 185:    {
+ 186:       var meals = await Repository.GetByPredicate(m => m.PetId == petId);
+ 187:
+ 188:       if (meals.Count <= 0)
+ 189:       {
+ 190:          return new List<Meal>();
+ 191:       }
+ 192:
+ 193:       return meals;
+ 194:    }
+ 195:
+ 196:    // Changes the status of a meal and updates the calories consumed.
+ 197:    public async Task ChangeStatus(Guid mealId, MealStatus mealStatus, double caloriesConsumed)
+ 198:    {
+ 199:       var meal = await Repository.FindById(mealId);
+ 200:
+ 201:       if (meal == null)
+ 202:          throw new ApiException("Meal not found", 404);
+ 203:
+ 204:       var petRepository = _unitOfWork.Repository<Pet>();
+ 205:
+ 206:       var pet = await petRepository.FindById(meal.PetId);
+ 207:
+ 208:       if (pet == null)
+ 209:          throw new ApiException("Pet wasn't found", 404);
+ 210:
+ 211:       var user = await _userService.GetById(pet.UserId);
+ 212:
+ 213:       if (user == null)
+ 214:          throw new ApiException("User wasn't found", 404);
+ 215:
+ 216:       var device = await _deviceService.GetByUserId(user.UserId);
+ 217:
+ 218:       if (device == null)
+ 219:          throw new ApiException("Device wasn't found", 404);
+ 220:
+ 221:       meal.MealStatus = mealStatus;
+ 222:       meal.CaloriesConsumed = caloriesConsumed;
+ 223:
+ 224:       device.MealWeight -= caloriesConsumed;
+ 225:
+ 226:       if (meal.IsDaily && meal.PortionSize > device.MealWeight)
+ 227:       {
+ 228:          await _notificationService.CreateNotification(user.UserId, "Наповніть годівницю для наступного харчування");
+ 229:       }
+ 230:
+ 231:       await Repository.Update(meal);
+ 232:       await _unitOfWork.SaveChangesAsync();
+ 233:    }
+ 234:
+ 235:    public async Task<List<MealDto>> GetByUserId(Guid userId)
+ 236:    {
+ 237:       var petRepository = _unitOfWork.Repository<Pet>();
+ 238:
+ 239:       var userPets = await petRepository.GetByPredicate(p => p.UserId == userId);
+ 240:
+ 241:       var petIds = userPets.Select(p => p.PetId).ToList();
+ 242:
+ 243:       var meals = _mapper.Map<List<MealDto>>(await Repository.GetByPredicate(m => petIds.Contains(m.PetId)));
+ 244:
+ 245:       return meals;
+ 246:    }
+ 247: }
+
+В.2 Функція бізнес логіки системи. Фунції створення аналізу тварини на основі харчових звичок.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/HealthAnalysisService.cs
+
+   1: using PetHouse.Application.Contracts.HealthAnalysis;
+   2: using PetHouse.Application.Helpers;
+   3: using PetHouse.Application.Interfaces.Services;
+   4: using PetHouse.Core.Enums.HealthAnalysis;
+   5: using PetHouse.Core.Enums.Meal;
+   6: using PetHouse.Core.Models;
+   7: using PetHouse.Persistence.Interfaces;
+   8:
+   9: namespace PetHouse.Application.Services;
+  10:
+  11: public class HealthAnalysisService : GenericService<HealthAnalysis>, IHealthAnalysisService
+  12: {
+  13:    private readonly IUnitOfWork _unitOfWork;
+  14:    private readonly IMealRepository _mealRepository;
+  15:    private readonly IMealService _mealService;
+  16:
+  17:
+  18:    public HealthAnalysisService(IUnitOfWork unitOfWork,
+  19:       IMealRepository mealRepository, IMealService mealService) : base(unitOfWork)
+  20:    {
+  21:       _unitOfWork = unitOfWork;
+  22:       _mealRepository = mealRepository;
+  23:       _mealService = mealService;
+  24:    }
+  25:
+  26:    // Creates a new health analysis for a pet within a specified date range.
+  27:    // - Fetches the pet's data and meal history for the given period.
+  28:    // - Performs analysis based on the meal data to determine the health status and recommendations.
+  29:    public async Task<Guid> CreateHealthAnalysis(Guid petId, DateOnly startDate, DateOnly endDate)
+  30:    {
+  31:       var petRepository = _unitOfWork.Repository<Pet>();
+  32:
+  33:       var pet = await petRepository.FindById(petId);
+  34:
+  35:       if (pet == null)
+  36:       {
+  37:          throw new ApiException("User wasn't found", 404);
+  38:       }
+  39:
+  40:       var startDateTime = DateTime.SpecifyKind(startDate.ToDateTime(TimeOnly.MinValue), DateTimeKind.Utc);
+  41:       var endDateTime = DateTime.SpecifyKind(endDate.ToDateTime(TimeOnly.MaxValue), DateTimeKind.Utc);
+  42:
+  43:       var meals = await _mealRepository
+  44:          .FindAll(m => m.PetId == petId &&
+  45:                        m.StartTime >= startDateTime &&
+  46:                        m.StartTime <= endDateTime &&
+  47:                        m.MealStatus == MealStatus.Completed);
+  48:
+  49:       if (!meals.Any())
+  50:       {
+  51:          throw new ApiException("No meals found for the specified period", 400);
+  52:       }
+  53:
+  54:       var analysisResult = AnalyzeHealth(pet, meals);
+  55:
+  56:       var healthAnalysis = new HealthAnalysis
+  57:       {
+  58:          HealthAnalysisId = Guid.NewGuid(),
+  59:          PetId = petId,
+  60:          AnalysisDate = DateTime.UtcNow,
+  61:          AnalysisStartDate = startDate,
+  62:          AnalysisEndDate = endDate,
+  63:          CaloriesConsumed = analysisResult.TotalCalories,
+  64:          HealthAnalysisType = analysisResult.HealthStatus,
+  65:          Recomendations = analysisResult.Recommendations
+  66:       };
+  67:
+  68:       await Repository.Add(healthAnalysis);
+  69:       await _unitOfWork.SaveChangesAsync();
+  70:
+  71:       return healthAnalysis.HealthAnalysisId;
+  72:    }
+  73:
+  74:    // Updates an existing health analysis.
+  75:    // - Recalculates the calories consumed during the new date range.
+  76:    // - Updates health analysis details like health status and recommendations.
+  77:    public async Task<HealthAnalysis> UpdateHealthAnalysis(Guid healthAnalysisId,
+  78:       DateOnly startDate, DateOnly endDate, HealthStatus healthAnalysisType, string recommendations)
+  79:    {
+  80:       var healthAnalysis = await Repository.FindById(healthAnalysisId);
+  81:
+  82:       if (healthAnalysis == null)
+  83:          throw new ApiException("Health analysis wasn't found", 404);
+  84:
+  85:       var startDateTime = DateTime.SpecifyKind(startDate.ToDateTime(TimeOnly.MinValue), DateTimeKind.Utc);
+  86:       var endDateTime = DateTime.SpecifyKind(endDate.ToDateTime(TimeOnly.MaxValue), DateTimeKind.Utc);
+  87:
+  88:       var meals = await _mealRepository.FindAll(m => m.PetId == healthAnalysis.PetId &&
+  89:                                                      m.StartTime >= startDateTime &&
+  90:                                                      m.StartTime <= endDateTime);
+  91:
+  92:       var totalCalories = meals.Sum(m => m.CaloriesConsumed);
+  93:
+  94:       healthAnalysis.CaloriesConsumed = totalCalories;
+  95:       healthAnalysis.HealthAnalysisType = healthAnalysisType;
+  96:       healthAnalysis.Recomendations = recommendations;
+  97:
+  98:       await Repository.Update(healthAnalysis);
+  99:       await _unitOfWork.SaveChangesAsync();
+ 100:
+ 101:       return healthAnalysis;
+ 102:    }
+ 103:
+ 104:    // Analyzes the health of a pet based on its meals.
+ 105:    // - Calculates total and average calories consumed.
+ 106:    // - Evaluates consistency of calorie intake using standard deviation and coefficient of variation.
+ 107:    // - Determines health status and provides dietary recommendations.
+ 108:    private HealthAnalysisResult AnalyzeHealth(Pet pet, IEnumerable<Meal> meals)
+ 109:    {
+ 110:       var totalCalories = CalculateTotalCalories(meals);
+ 111:       var averageCalories = CalculateAverageCalories(meals);
+ 112:       var calorieStandardDeviation = CalculateCalorieStandardDeviation(meals, averageCalories);
+ 113:       var coefficientOfVariation = CalculateCoefficientOfVariation(calorieStandardDeviation, averageCalories);
+ 114:       var idealCalories = _mealService.CalculateCaloriesPerDay(pet);
+ 115:       var (healthStatus, recommendations) =
+ 116:          DetermineHealthStatus(averageCalories, idealCalories, coefficientOfVariation);
+ 117:
+ 118:       return new HealthAnalysisResult
+ 119:       {
+ 120:          TotalCalories = totalCalories,
+ 121:          HealthStatus = healthStatus,
+ 122:          Recommendations = recommendations
+ 123:       };
+ 124:    }
+ 125:
+ 126:    // Calculates the total calories consumed from a list of meals.
+ 127:    private double CalculateTotalCalories(IEnumerable<Meal> meals)
+ 128:    {
+ 129:       return meals.Sum(m => m.CaloriesConsumed);
+ 130:    }
+ 131:
+ 132:    // Calculates the average calories consumed per meal.
+ 133:    private double CalculateAverageCalories(IEnumerable<Meal> meals)
+ 134:    {
+ 135:       return meals.Average(m => m.CaloriesConsumed);
+ 136:    }
+ 137:
+ 138:    // Calculates the standard deviation of calorie intake.
+ 139:    private double CalculateCalorieStandardDeviation(IEnumerable<Meal> meals, double averageCalories)
+ 140:    {
+ 141:       return Math.Sqrt(meals.Average(m => Math.Pow(m.CaloriesConsumed - averageCalories, 2)));
+ 142:    }
+ 143:
+ 144:    // Calculates the coefficient of variation (a measure of inconsistency in calorie intake).
+ 145:    private double CalculateCoefficientOfVariation(double calorieStandardDeviation, double averageCalories)
+ 146:    {
+ 147:       return (calorieStandardDeviation / averageCalories) * 100;
+ 148:    }
+ 149:
+ 150:    // Determines the health status and provides dietary recommendations based on calorie intake and its consistency.
+ 151:    private (HealthStatus, string) DetermineHealthStatus(double averageCalories, double idealCalories,
+ 152:       double coefficientOfVariation)
+ 153:    {
+ 154:       if (coefficientOfVariation > 20)
+ 155:       {
+ 156:          return (HealthStatus.Inconsistient,
+ 157:             "The diet appears inconsistent. Regularize feeding times and portion sizes.");
+ 158:       }
+ 159:       else if (averageCalories < idealCalories * 0.8)
+ 160:       {
+ 161:          return (HealthStatus.UnderWeight, "Increase portion sizes or meal frequency to meet dietary needs.");
+ 162:       }
+ 163:       else if (averageCalories > idealCalories * 1.2)
+ 164:       {
+ 165:          return (HealthStatus.Overweight, "Reduce portion sizes or limit calorie-dense foods.");
+ 166:       }
+ 167:       else
+ 168:       {
+ 169:          return (HealthStatus.Healthy, "The pet's diet is consistent and meets nutritional requirements.");
+ 170:       }
+ 171:    }
+ 172: }
+
+В.3 Функції адміністрування системи. Функції створення резервної копії бази даних, відновлення бази даних, Перегляд стану серверу та бази даних. 
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/AdminService.cs
+
+   1: using System.Diagnostics;
+   2: using Microsoft.EntityFrameworkCore;
+   3: using PetHouse.Application.Contracts.Server;
+   4: using PetHouse.Application.Helpers;
+   5: using PetHouse.Application.Interfaces.Services;
+   6: using PetHouse.Core.Enums.User;
+   7: using PetHouse.Persistence;
+   8: using PetHouse.Persistence.Interfaces;
+   9:
+  10: namespace PetHouse.Application.Services;
+  11:
+  12: using System.Diagnostics;
+  13: using System.Security.Cryptography;
+  14: using System.Text;
+  15: using System.Text.Json;
+  16: using Microsoft.Extensions.Configuration;
+  17: using Npgsql;
+  18:
+  19: public class AdminService : IAdminService
+  20: {
+  21:    private readonly string? _connectionString;
+  22:    private readonly string _encryptionKey;
+  23:    private static readonly DateTime ServerStartTime = DateTime.UtcNow;
+  24:    private readonly IUserRepository _userRepository;
+  25:    private readonly ISystemLogService _systemLogService;
+  26:    private readonly PetHouseDbContext _context;
+  27:
+  28:    public AdminService(IConfiguration configuration, IUserRepository userRepository,
+  29:       ISystemLogService systemLogService, PetHouseDbContext context)
+  30:    {
+  31:       _userRepository = userRepository;
+  32:       _systemLogService = systemLogService;
+  33:       _context = context;
+  34:       _connectionString = configuration.GetConnectionString(nameof(PetHouseDbContext));
+  35:       _encryptionKey = configuration["EncryptionKey"];
+  36:    }
+  37:
+  38:    // Creates an encrypted JSON backup of the PostgreSQL database.
+  39:    public async Task<string> BackupData(string? outputDirectory)
+  40:    {
+  41:       try
+  42:       {
+  43:          outputDirectory ??= Path.GetTempPath();
+  44:          if (!Directory.Exists(outputDirectory))
+  45:          {
+  46:             Directory.CreateDirectory(outputDirectory);
+  47:          }
+  48:
+  49:          string backupFileName = $"backup_{DateTime.Now:yyyyMMddHHmmss}.json.enc";
+  50:          string backupFilePath = Path.Combine(outputDirectory, backupFileName);
+  51:
+  52:          var data = await ExportDatabaseToJson();
+  53:          var json = JsonSerializer.Serialize(data, new JsonSerializerOptions
+  54:          {
+  55:             WriteIndented = true
+  56:          });
+  57:          await _systemLogService.AddLogAsync("Add Backup", $"Backup data saved in {backupFileName}");
+  58:
+  59:          byte[] encryptedJson = EncryptJson(json, _encryptionKey);
+  60:
+  61:          await File.WriteAllBytesAsync(backupFilePath, encryptedJson);
+  62:
+  63:          return backupFilePath;
+  64:       }
+  65:       catch (Exception ex)
+  66:       {
+  67:          await _systemLogService.AddLogAsync("Add Backup", $"Backup data error");
+  68:          throw new ApiException($"An error occurred while creating the backup: {ex.Message}", 500);
+  69:       }
+  70:    }
+  71:
+  72:    // Restores the database from an encrypted JSON backup.
+  73:    public async Task RestoreDataAsync(string backupFilePath)
+  74:    {
+  75:       try
+  76:       {
+  77:          var data = await ReadAndDecryptBackupAsync(backupFilePath);
+  78:
+  79:          await using var connection = new NpgsqlConnection(_connectionString);
+  80:          await connection.OpenAsync();
+  81:
+  82:          var orderedTables = GetOrderedTables(data);
+  83:
+  84:          foreach (var table in orderedTables)
+  85:          {
+  86:             await TruncateTableAsync(connection, table);
+  87:
+  88:             var rows = data[table];
+  89:             foreach (var row in rows)
+  90:             {
+  91:                await InsertRowAsync(connection, table, row);
+  92:             }
+  93:          }
+  94:          await _systemLogService.AddLogAsync("Restore", $"Backup data {backupFilePath} restored");
+  95:       }
+  96:       catch (Exception ex)
+  97:       {
+  98:          await _systemLogService.AddLogAsync("Restore", $"Backup data {backupFilePath} restore failed. {ex.Message}");
+  99:          throw new ApiException($"An error occurred during restore: {ex.Message}", 500);
+ 100:       }
+ 101:    }
+ 102:
+ 103:    public async Task SetUserRole(Guid userId, Role newUserRole)
+ 104:    {
+ 105:       var user = (await _userRepository.GetByPredicate(u => u.UserId == userId)).FirstOrDefault();
+ 106:
+ 107:       if (user == null)
+ 108:       {
+ 109:          throw new ApiException("Користувач не знайдений", 404);
+ 110:       }
+ 111:
+ 112:       user.UserRole = newUserRole;
+ 113:
+ 114:       await _userRepository.Update(user);
+ 115:    }
+ 116:
+ 117:    public async Task<ServerStatusDto> GetServerStatusAsync()
+ 118:    {
+ 119:       var uptime = DateTime.UtcNow - ServerStartTime;
+ 120:       var memoryUsage = GC.GetTotalMemory(false) / (1024.0 * 1024.0);
+ 121:
+ 122:       double cpuUsagePercent = await GetCpuUsageAsync();
+ 123:
+ 124:       return new ServerStatusDto
+ 125:       {
+ 126:          IsAlive = true,
+ 127:          Uptime = uptime,
+ 128:          CpuUsagePercent = cpuUsagePercent,
+ 129:          MemoryUsageMB = memoryUsage
+ 130:       };
+ 131:    }
+ 132:
+ 133:    public async Task<DatabaseStatusDto> GetDatabaseStatusAsync()
+ 134:    {
+ 135:       var status = new DatabaseStatusDto
+ 136:       {
+ 137:          CheckedAt = DateTime.UtcNow,
+ 138:          IsDatabaseConnected = false,
+ 139:          DatabaseSizeMB = 0.0
+ 140:       };
+ 141:
+ 142:       try
+ 143:       {
+ 144:          var connection = (NpgsqlConnection)_context.Database.GetDbConnection();
+ 145:          await connection.OpenAsync();
+ 146:
+ 147:          var dbName = connection.Database;
+ 148:
+ 149:          var sql = $"SELECT pg_database_size('{dbName}')";
+ 150:
+ 151:          using var command = new NpgsqlCommand(sql, connection);
+ 152:          var result = await command.ExecuteScalarAsync();
+ 153:
+ 154:          if (result != null && long.TryParse(result.ToString(), out long sizeBytes))
+ 155:          {
+ 156:             status.DatabaseSizeMB = Math.Round(sizeBytes / 1024.0 / 1024.0, 2);
+ 157:          }
+ 158:
+ 159:          status.IsDatabaseConnected = true;
+ 160:       }
+ 161:       catch
+ 162:       {
+ 163:          status.IsDatabaseConnected = false;
+ 164:       }
+ 165:       finally
+ 166:       {
+ 167:          if (_context.Database.GetDbConnection().State == System.Data.ConnectionState.Open)
+ 168:             await _context.Database.CloseConnectionAsync();
+ 169:       }
+ 170:
+ 171:       return status;
+ 172:    }
+ 173:
+ 174:
+ 175:    private async Task<double> GetCpuUsageAsync()
+ 176:    {
+ 177:       using var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+ 178:
+ 179:       _ = cpuCounter.NextValue();
+ 180:       await Task.Delay(500);
+ 181:
+ 182:       var cpuUsage = cpuCounter.NextValue();
+ 183:       return Math.Round(cpuUsage, 2);
+ 184:    }
+ 185:
+ 186:    // Exports all public tables from the database into a structured JSON object.
+ 187:    private async Task<Dictionary<string, List<Dictionary<string, object>>>> ExportDatabaseToJson()
+ 188:    {
+ 189:       var result = new Dictionary<string, List<Dictionary<string, object>>>();
+ 190:
+ 191:       await using var connection = new NpgsqlConnection(_connectionString);
+ 192:       await connection.OpenAsync();
+ 193:
+ 194:       var tables = new List<string>();
+ 195:       await using (var cmd = new NpgsqlCommand(
+ 196:                       "SELECT table_name FROM information_schema.tables WHERE table_schema='public';", connection))
+ 197:       await using (var reader = await cmd.ExecuteReaderAsync())
+ 198:       {
+ 199:          while (await reader.ReadAsync())
+ 200:          {
+ 201:             tables.Add(reader.GetString(0));
+ 202:          }
+ 203:       }
+ 204:
+ 205:       foreach (var table in tables)
+ 206:       {
+ 207:          var rows = new List<Dictionary<string, object>>();
+ 208:
+ 209:          await using (var cmd = new NpgsqlCommand($"SELECT * FROM \"{table}\";", connection))
+ 210:          await using (var reader = await cmd.ExecuteReaderAsync())
+ 211:          {
+ 212:             while (await reader.ReadAsync())
+ 213:             {
+ 214:                var row = new Dictionary<string, object>();
+ 215:                for (int i = 0; i < reader.FieldCount; i++)
+ 216:                {
+ 217:                   row[reader.GetName(i)] = reader.IsDBNull(i) ? null! : reader.GetValue(i);
+ 218:                }
+ 219:
+ 220:                rows.Add(row);
+ 221:             }
+ 222:          }
+ 223:
+ 224:          result[table] = rows;
+ 225:       }
+ 226:
+ 227:       return result;
+ 228:    }
+ 229:
+ 230:    // Encrypts the given JSON string using AES-256 encryption.
+ 231:    private byte[] EncryptJson(string plainText, string key)
+ 232:    {
+ 233:       using var aes = Aes.Create();
+ 234:       aes.Key = Encoding.UTF8.GetBytes(PadKey(key, 32));
+ 235:       aes.GenerateIV();
+ 236:
+ 237:       using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+ 238:       using var ms = new MemoryStream();
+ 239:       ms.Write(aes.IV, 0, aes.IV.Length);
+ 240:       using (var cs = new CryptoStream(ms, encryptor, CryptoStreamMode.Write))
+ 241:       using (var sw = new StreamWriter(cs))
+ 242:       {
+ 243:          sw.Write(plainText);
+ 244:       }
+ 245:
+ 246:       return ms.ToArray();
+ 247:    }
+ 248:
+ 249:    // Decrypts the encrypted JSON data back into a string.
+ 250:    private string DecryptJson(byte[] cipherData, string key)
+ 251:    {
+ 252:       using var aes = Aes.Create();
+ 253:       aes.Key = Encoding.UTF8.GetBytes(PadKey(key, 32));
+ 254:
+ 255:       using var ms = new MemoryStream(cipherData);
+ 256:
+ 257:       byte[] iv = new byte[16];
+ 258:       ms.Read(iv, 0, iv.Length);
+ 259:       aes.IV = iv;
+ 260:
+ 261:       using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+ 262:       using var cs = new CryptoStream(ms, decryptor, CryptoStreamMode.Read);
+ 263:       using var sr = new StreamReader(cs);
+ 264:       return sr.ReadToEnd();
+ 265:    }
+ 266:
+ 267:    // Pads or trims the encryption key to the required length.
+ 268:    private string PadKey(string key, int length)
+ 269:    {
+ 270:       if (key.Length > length)
+ 271:          return key.Substring(0, length);
+ 272:       if (key.Length < length)
+ 273:          return key.PadRight(length, '0');
+ 274:       return key;
+ 275:    }
+ 276:
+ 277:    private async Task<Dictionary<string, List<Dictionary<string, object>>>> ReadAndDecryptBackupAsync(
+ 278:       string backupFilePath)
+ 279:    {
+ 280:       if (!File.Exists(backupFilePath))
+ 281:       {
+ 282:          throw new FileNotFoundException("Backup file not found.");
+ 283:       }
+ 284:
+ 285:       byte[] encryptedData = await File.ReadAllBytesAsync(backupFilePath);
+ 286:       string decryptedJson = DecryptJson(encryptedData, _encryptionKey);
+ 287:
+ 288:       var data = JsonSerializer.Deserialize<Dictionary<string, List<Dictionary<string, object>>>>(decryptedJson);
+ 289:       if (data == null)
+ 290:       {
+ 291:          throw new ApiException("Decrypted backup is empty or invalid.", 500);
+ 292:       }
+ 293:
+ 294:       return data;
+ 295:    }
+ 296:
+ 297:    private List<string> GetOrderedTables(Dictionary<string, List<Dictionary<string, object>>> data)
+ 298:    {
+ 299:       var preferredOrder = new List<string>
+ 300:       {
+ 301:          "Users",
+ 302:          "Pets",
+ 303:          "HealthAnalyses",
+ 304:          "PetPhotos",
+ 305:          "Comments"
+ 306:       };
+ 307:
+ 308:       var orderedTables = preferredOrder.Where(data.ContainsKey).ToList();
+ 309:
+ 310:       orderedTables.AddRange(data.Keys.Except(orderedTables));
+ 311:
+ 312:       return orderedTables;
+ 313:    }
+ 314:
+ 315:    private async Task TruncateTableAsync(NpgsqlConnection connection, string table)
+ 316:    {
+ 317:       await using var truncateCmd =
+ 318:          new NpgsqlCommand($"TRUNCATE TABLE \"{table}\" RESTART IDENTITY CASCADE;", connection);
+ 319:       await truncateCmd.ExecuteNonQueryAsync();
+ 320:    }
+ 321:
+ 322:    private async Task InsertRowAsync(NpgsqlConnection connection, string table, Dictionary<string, object> row)
+ 323:    {
+ 324:       var columns = string.Join(", ", row.Keys.Select(k => $"\"{k}\""));
+ 325:       var parameters = string.Join(", ", row.Keys.Select(k => $"@{k}"));
+ 326:
+ 327:       await using var insertCommand =
+ 328:          new NpgsqlCommand($"INSERT INTO \"{table}\" ({columns}) VALUES ({parameters});", connection);
+ 329:
+ 330:       foreach (var kvp in row)
+ 331:       {
+ 332:          var paramName = $"@{kvp.Key}";
+ 333:          var value = kvp.Value;
+ 334:
+ 335:          if (value == null)
+ 336:          {
+ 337:             insertCommand.Parameters.AddWithValue(paramName, DBNull.Value);
+ 338:             continue;
+ 339:          }
+ 340:
+ 341:          if (kvp.Key.EndsWith("Id", StringComparison.OrdinalIgnoreCase) &&
+ 342:              Guid.TryParse(value.ToString(), out var guidValue))
+ 343:          {
+ 344:             insertCommand.Parameters.AddWithValue(paramName, guidValue);
+ 345:          }
+ 346:          else if (value is JsonElement jsonElement)
+ 347:          {
+ 348:             switch (jsonElement.ValueKind)
+ 349:             {
+ 350:                case JsonValueKind.String:
+ 351:                   if (Guid.TryParse(jsonElement.GetString(), out var parsedGuid))
+ 352:                   {
+ 353:                      insertCommand.Parameters.AddWithValue(paramName, parsedGuid);
+ 354:                   }
+ 355:                   else if (DateTime.TryParse(jsonElement.GetString(), out var parsedDateTime))
+ 356:                   {
+ 357:                      insertCommand.Parameters.AddWithValue(paramName, parsedDateTime);
+ 358:                   }
+ 359:                   else
+ 360:                   {
+ 361:                      insertCommand.Parameters.AddWithValue(paramName, jsonElement.GetString());
+ 362:                   }
+ 363:
+ 364:                   break;
+ 365:                case JsonValueKind.Number:
+ 366:                   if (jsonElement.TryGetInt32(out var intValue))
+ 367:                   {
+ 368:                      insertCommand.Parameters.AddWithValue(paramName, intValue);
+ 369:                   }
+ 370:                   else if (jsonElement.TryGetDouble(out var doubleValue))
+ 371:                   {
+ 372:                      insertCommand.Parameters.AddWithValue(paramName, doubleValue);
+ 373:                   }
+ 374:
+ 375:                   break;
+ 376:                case JsonValueKind.True:
+ 377:                case JsonValueKind.False:
+ 378:                   insertCommand.Parameters.AddWithValue(paramName, jsonElement.GetBoolean());
+ 379:                   break;
+ 380:                case JsonValueKind.Null:
+ 381:                   insertCommand.Parameters.AddWithValue(paramName, DBNull.Value);
+ 382:                   break;
+ 383:                default:
+ 384:                   insertCommand.Parameters.AddWithValue(paramName, jsonElement.ToString());
+ 385:                   break;
+ 386:             }
+ 387:          }
+ 388:          else
+ 389:          {
+ 390:             insertCommand.Parameters.AddWithValue(paramName, value);
+ 391:          }
+ 392:       }
+ 393:
+ 394:       await insertCommand.ExecuteNonQueryAsync();
+ 395:    }
+ 396:
+ 397:
+ 398: }
+
+В.4 Функція адміністрування системи. Перегляд та зміна конфігурації.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/ConfigurationService.cs
+
+   1: using System.Text.Json;
+   2: using Microsoft.Extensions.Options;
+   3: using PetHouse.Application.Contracts.Configuration;
+   4: using PetHouse.Application.Interfaces.Services;
+   5:
+   6: namespace PetHouse.Application.Services;
+   7:
+   8: public class ConfigurationService : IConfigurationService
+   9: {
+  10:    private readonly IOptionsMonitor<ConfigurationDto> _options;
+  11:
+  12:    public ConfigurationService(IOptionsMonitor<ConfigurationDto> options)
+  13:    {
+  14:       _options = options;
+  15:    }
+  16:
+  17:    public ConfigurationDto GetServerConfiguration()
+  18:    {
+  19:       return _options.CurrentValue;
+  20:    }
+  21:
+  22:    public async Task ChangeConfiguration(ConfigurationDto config)
+  23:    {
+  24:       var newJson = JsonSerializer.Serialize(new { DynamicConfiguration = config },
+  25:          new JsonSerializerOptions { WriteIndented = true });
+  26:       await File.WriteAllTextAsync("runtimeconfig.json", newJson);
+  27:    }
+  28:
+  29: }
+
+В.5 Функції адміністрування системи. Перегляд та видалення системних подій.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/SystemLogService.cs
+
+   1: using PetHouse.Application.Interfaces.Services;
+   2: using PetHouse.Core.Models;
+   3: using PetHouse.Persistence.Interfaces;
+   4:
+   5: namespace PetHouse.Application.Services;
+   6:
+   7: public class SystemLogService : GenericService<SystemLog>, ISystemLogService
+   8: {
+   9:    public SystemLogService(IUnitOfWork unitOfWork) : base(unitOfWork)
+  10:    {
+  11:    }
+  12:
+  13:    public async Task AddLogAsync(string eventType, string message)
+  14:    {
+  15:       var log = new SystemLog
+  16:       {
+  17:          Id = Guid.NewGuid(),
+  18:          EventType = eventType,
+  19:          Message = message,
+  20:          CreatedAt = DateTime.UtcNow
+  21:       };
+  22:
+  23:       await Repository.Add(log);
+  24:    }
+  25:
+  26:    public async Task<int> DeleteLogsOlderThanAsync(int days)
+  27:    {
+  28:       var cutoffDate = DateTime.UtcNow.AddDays(-days);
+  29:
+  30:       var oldLogs = await Repository
+  31:          .GetByPredicate(log => log.CreatedAt < cutoffDate);
+  32:
+  33:       if (oldLogs.Count == 0)
+  34:          return 0;
+  35:
+  36:       await Repository.DeleteRange(oldLogs);
+  37:
+  38:       return oldLogs.Count;
+  39:    }
+  40:
+  41: }
