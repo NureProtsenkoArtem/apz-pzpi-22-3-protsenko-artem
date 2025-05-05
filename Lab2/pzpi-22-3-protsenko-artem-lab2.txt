@@ -74,25 +74,26 @@
 Графічні матеріали
 
  
-Рисунок Б.1 – ER діаграма даних (Нотація вороняча лапка)
+Рисунок Б.1 – ER діаграма даних
+ 
+Рисунок Б.2 – Структура бази даних
+ 
+Рисунок Б.3 – UML-діаграма прецедентів
 
  
-Рисунок Б.2 – UML діаграма прецедентів
+Рисунок Б.4 – UML-діаграма розгортання
 
  
-Рисунок Б.3 – UML діаграма прецендентів
-
+Рисунок Б.5 – UML діаграма діяльності для функції аналізу здоров’я тварини на основі харчових звичок
  
-Рисунок Б.4 – UML діаграма діяльності для функції аналізу здоров’я тварини на основі харчових звичок
- 
-Рисунок Б.5 – Діаграма діяльності для функції додавання годування
+Рисунок Б.6 – Діаграма діяльності для функції додавання годування
 
 
  
 ДОДАТОК В
 Програмний код
 
-В.1 Функція бізнес логіки. Створення адаптивного годування
+В.1 Математична обробка прикладних даних. Визначення RER  коефіцієнту.
 
 GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/MealService.cs
 
@@ -344,7 +345,7 @@ GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22
  246:    }
  247: }
 
-В.2 Функція бізнес логіки системи. Фунції створення аналізу тварини на основі харчових звичок.
+В.2 Математична обробка прикладних даних. Розрахунок стандартного відхилення та коефіцієнту варіації.
 
 GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/HealthAnalysisService.cs
 
@@ -521,7 +522,7 @@ GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22
  171:    }
  172: }
 
-В.3 Функції адміністрування системи. Функції створення резервної копії бази даних, відновлення бази даних, Перегляд стану серверу та бази даних. 
+В.3 Резервне копіювання користувацьких даних. Функції створення резервної копії бази даних, відновлення бази даних, Перегляд стану серверу та бази даних. 
 
 GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/AdminService.cs
 
@@ -924,7 +925,7 @@ GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22
  397:
  398: }
 
-В.4 Функція адміністрування системи. Перегляд та зміна конфігурації.
+В.4 Адміністрування бізнес-логіки системи. Перегляд та зміна конфігурації.
 
 GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/ConfigurationService.cs
 
@@ -958,7 +959,7 @@ GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22
   28:
   29: }
 
-В.5 Функції адміністрування системи. Перегляд та видалення системних подій.
+В.5 Адміністрування бізнес-логіки системи. Перегляд та видалення системних подій.
 
 GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab2/pzpi-22-3-protsenko-artem-lab2/PetHouse.Application/Services/SystemLogService.cs
 
