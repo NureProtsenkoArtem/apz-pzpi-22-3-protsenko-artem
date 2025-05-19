@@ -1,0 +1,566 @@
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+до лабораторної роботи №3 з дисципліни
+«Архітектура програмного забезпечення»
+на тему: «РОЗРОБКА ПРОГРАМНОЇ АРХІТЕКТУРИ, СТВОРЕННЯ ТА ВІДЛАГОДЖЕННЯ ПРОГРАМНОГО КОДУ ВЕБ КЛІЄНТА ПРОГРАМНОЇ СИСТЕМИ»
+
+
+
+
+
+
+Виконав
+ст. гр. ПЗПІ-22-3
+Проценко Артем Романович
+
+Перевірив
+ст. викладач кафедри ПІ
+Сокорчук Ігор Петрович
+
+
+
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+№	Дата	Версія звіту	Опис змін та виправлень
+1	02.05.2025	0.1	Створено розділ «Історія змін», створено титульний лист. Додано базову структуру серверної частини для доробки
+2	07.05.2025	0.1	Створено розділ «Опис виконаної роботи» 
+3	09.05.2025	0.1	Створено додаток Б, В.
+4	15.05.2025	0.1	Створено відеозапис та наведено в додатку А.
+5	18.05.2025	0.1	Створено розділ «Висновки»
+
+2 ХІД РОБОТИ
+
+Метою даної лабораторної роботи є розробка клієнтської частини програмної системи.
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+До виконаної роботи було створено відеозвіт, посилання на який наведено у додатку А.
+Усі графічні дані наведені у додатку Б.
+У ході виконання роботи було реалізовано повнофункціональний програмний продукт, основою якого став клієнтський додаток, створений з використанням бібліотеки React. Початковим етапом розробки стало проєктування архітектури системи та її основного функціоналу, з подальшим розширенням можливостей відповідно до поставлених вимог. Основна увага приділялася гнучкості інтерфейсу користувача та інтеграції з серверною логікою, що забезпечило зручність використання і розширюваність функціональних можливостей. На першому етапі дослідження було детально проаналізовано ключові функції системи, зокрема механізми додавання та редагування інформації про тварин, а також створення та оновлення даних про годування.
+Подальший розвиток функціональності системи був зосереджений на бізнес логіці, що забезпечує прийняття рішень на основі зібраних даних. Зокрема, реалізовано механізми формування адаптивного годування, які враховують індивідуальні харчові звички тварини, що дозволяє підвищити ефективність її догляду. Окрему увагу приділено аналізу здоров’я тварини на основі динаміки її харчової поведінки.
+У межах системного забезпечення реалізовано комплекс функцій для адміністратора бази даних. Досліджено та впроваджено можливості моніторингу поточного стану бази, що забезпечує контроль за її структурною цілісністю, а також механізми створення резервних копій і відновлення даних. Додатково було впроваджено інструменти для системного адміністратора, зокрема функції перегляду системних подій, контролю за станом серверної інфраструктури та можливість зміни конфігурації.
+Також було реалізовано функції локального адміністрування, що включають можливість гнучкої зміни ролей користувачів системи.
+Програмний код окремих компонентів наведено в додатку В.
+ 
+ВИСНОВКИ
+
+В результаті виконання лабораторної роботи була розроблена клієнтська частина програмної системи для автоматизації годування домашніх тварин. Було впроваджено користувальницьких інтерфейс для виконання основних функцій, функцій бізнес логіки, функцій адміністрування системи. Було впроваджено локалізацію та інтернаціоналізацію клієнтської частини.
+ 
+ДОДАТОК А
+Відеозапис
+
+Відеозапис презентації результатів лабораторної роботи: https://youtu.be/AHoLSfjYKRs
+
+Хронологічний опис відеозапису:
+00:00 - Привітання. Доповідач вітається, розповідає про загальну мету лабораторної роботи та коротко окреслює, які функції були реалізовані.
+00:17 - Основні функції програмної системи. Розглядається функції додававання та редагування тварини, додавання та редагування годування.
+02:40 - Функції бізнес логіки програмної системи. Розглядається функції створення адаптивного годування тварини та аналізу здоров’я тварини на основі харчових звичок.
+04:54 - Функції адміністратора БД. Розглядається функції перегляду стану бази даних, створення резервної копії БД та відновлення за допомогою резервної копії.
+07:14 - Функції системного адміністратора. Розглядається функції перегляду системних подій, перегляду стану сервера та зміна конфігурації системи.
+09:04 -  Функції локального адміністратора. Розглядається функції зміни ролей.
+10:06 - Функції локалізації та інтерналізація. Розглядається результати впровадження різних мов, локалізації часу та конвертування величин.
+11:17 - Висновки. Підбивається підсумок виконаної роботи.
+ 
+ДОДАТОК Б
+Графічні матеріали
+
+ 
+Рисунок Б.1 – ER-діаграма даних
+ 
+Рисунок Б.2 – Структура бази даних
+ 
+Рисунок Б.3 – UML-діаграма прецедентів
+ 
+ДОДАТОК В
+Програмний код
+
+В.1 Математична обробка прикладних даних.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab3/pzpi-22-3-protsenko-artem-lab3/src/pages/PetPage/pet-page.page.tsx
+
+  1  import { MainLayout } from "@ui/layout/layout";
+  2  import { FC } from "react";
+  3  import { useNavigate, useParams } from "react-router-dom";
+  4  import { useDeleteMeal, useDeletePet, useGetPetById, useGetPetMealsByPetId } from "./hooks/usePet";
+  5  import { ActionCell, Button, InfoRow, PageWrapper, PetCard, Table, TableHeader, TableWrapper, Td, Th, Title } from "./pet-page.style";
+  6  import { IMeal } from "types/meal/meal.type";
+  7  import { parseTime } from "helpers/date-parse";
+  8  import { useTranslation } from "react-i18next";
+  9  import { ROUTES } from "@pages/router/routes.enums";
+ 10  import { formatDateByLanguage, formatToLocalizedTime, gramsToOunces, kgToLbs } from "helpers/converter";
+ 11  import i18n from "locales/i18n";
+ 12  
+ 13  export const PetPage: FC = () => {
+ 14      const navigate = useNavigate()
+ 15      const { id } = useParams();
+ 16      const { data: pet, isLoading } = useGetPetById(id!);
+ 17      const { data: meals, isLoading: mealsLoading } = useGetPetMealsByPetId(id!);
+ 18      const { mutate: deletePetMutate } = useDeletePet();
+ 19      const { mutate: deleteMealMutate } = useDeleteMeal();
+ 20      const isEnglish = i18n.language === "en";
+ 21      const { t } = useTranslation();
+ 22  
+ 23      if (isLoading || mealsLoading) {
+ 24          return (
+ 25              <MainLayout>
+ 26                  Loading...
+ 27              </MainLayout>
+ 28          );
+ 29      }
+ 30  
+ 31      const handleAddMeal = () => {
+ 32          navigate(ROUTES.ADD_MEAL.replace(":id", id!))
+ 33      };
+ 34  
+ 35      const handleEditMeal = (mealId: string) => {
+ 36          navigate(ROUTES.EDIT_MEAL.replace(":id", mealId))
+ 37      };
+ 38  
+ 39      const handleDeleteMeal = (mealId: string) => {
+ 40          const confirm = window.confirm(t("delete_pet_text"));
+ 41          if (confirm) {
+ 42              deleteMealMutate(mealId)
+ 43          }
+ 44      };
+ 45  
+ 46      const handleEditPet = () => {
+ 47          navigate(ROUTES.UPDATE_PET_PAGE.replace(":id", pet!.petId))
+ 48      };
+ 49  
+ 50      const handleDeletePet = () => {
+ 51          const confirm = window.confirm("Ви впевнені, що хочете видалити тварину?");
+ 52          if (confirm) {
+ 53              deletePetMutate(pet!.petId)
+ 54          }
+ 55      };
+ 56  
+ 57      return (
+ 58          <MainLayout>
+ 59              <PageWrapper>
+ 60                  <PetCard>
+ 61                      <Title>{pet!.petName} 🐾</Title>
+ 62                      <InfoRow>{t("pet_type")} {pet!.petType}</InfoRow>
+ 63  
+ 64                      <InfoRow>
+ 65                          {t("pet_weight")}{" "}
+ 66                          {isEnglish
+ 67                              ? `${kgToLbs(pet!.petWeight)} lbs`
+ 68                              : `${pet!.petWeight} кг`}
+ 69                      </InfoRow>
+ 70                      <InfoRow>{t("activity_level")} {pet!.activityLevel}</InfoRow>
+ 71                      <InfoRow>{t("calories_per_day")} {pet!.caloriesPerDay}</InfoRow>
+ 72                      <div style={{ display: "flex", gap: "1rem" }}>
+ 73                          <Button onClick={handleEditPet}>{t("update")}</Button>
+ 74                          <Button onClick={() => navigate(ROUTES.HEALTH_ANALYSIS_LIST_PAGE.replace(":id", pet!.petId))}>{t("health")}</Button>
+ 75                          <Button danger onClick={handleDeletePet}>{t("delete")}</Button>
+ 76                      </div>
+ 77                  </PetCard>
+ 78  
+ 79                  <TableWrapper>
+ 80                      <TableHeader>
+ 81                          <Title>{t("meal_history")}</Title>
+ 82                          <Button onClick={handleAddMeal}>{t("add_meal")}</Button>
+ 83                      </TableHeader>
+ 84  
+ 85                      <Table>
+ 86                          <thead>
+ 87                              <tr>
+ 88                                  <Th>{t("date")}</Th>
+ 89                                  <Th>{t("time")}</Th>
+ 90                                  <Th>{t("meal_type")}</Th>
+ 91                                  <Th>{t("portion_size")} {" "} {isEnglish ? "oz" : "г"}</Th>
+ 92                                  <Th>{t("status")}</Th>
+ 93                                  <Th>{t("options")}</Th>
+ 94                              </tr>
+ 95                          </thead>
+ 96                          <tbody>
+ 97                              {meals.map((meal: IMeal) => (
+ 98                                  <tr key={meal.mealId}>
+ 99                                      <Td>{formatDateByLanguage(meal.startTime, i18n.language)}</Td>
+100                                      <Td>
+101                                          {i18n.language === "en"
+102                                              ? formatToLocalizedTime(meal.startTime, i18n.language)
+103                                              : parseTime(meal.startTime)}
+104                                      </Td>
+105  
+106                                      <Td>{meal.foodType}</Td>
+107                                      <Td>
+108                                          {isEnglish
+109                                              ? `${gramsToOunces(meal.portionSize)}`
+110                                              : `${meal.portionSize}`}
+111                                      </Td>
+112                                      <Td>{meal.mealStatus}</Td>
+113                                      <ActionCell>
+114                                          <Button danger onClick={() => handleDeleteMeal(meal.mealId)}>🗑️</Button>
+115                                          {meal.mealStatus !== "Completed" && (
+116                                              <Button onClick={() => handleEditMeal(meal.mealId)}>✏️</Button>
+117                                          )}
+118                                      </ActionCell>
+119                                  </tr>
+120                              ))}
+121                          </tbody>
+122                      </Table>
+123                  </TableWrapper>
+124              </PageWrapper>
+125          </MainLayout>
+126      );
+127  };
+
+В.2 Адміністрування бізнес-логіки системи. Системний адміністратор.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab3/pzpi-22-3-protsenko-artem-lab3/src/pages/LocalAdminPage/local-admin.page.tsx
+
+  1  import { MainLayout } from "@ui/layout/layout";
+  2  import { FC, useEffect, useState } from "react";
+  3  import { useSystemLogs, useServerStatus, useServerConfiguration, useSetServerConfiguration, useDeleteOldLogs } from "./hooks/useSystemAdmin";
+  4  import {
+  5      Container,
+  6      Tab,
+  7      Tabs,
+  8      Table,
+  9      TableRow,
+ 10      TableCell,
+ 11      SectionTitle,
+ 12      Pagination,
+ 13      StatusBlock,
+ 14      ConfigBlock,
+ 15      DeleteLogsBlock,
+ 16      DeleteButton,
+ 17      DeleteLabel,
+ 18      Form,
+ 19      FormGroup,
+ 20      Label,
+ 21      Input,
+ 22      SubmitButton,
+ 23  } from "./system-admin.style";
+ 24  import { ISystemLog } from "types/systemLog/systemLog.type";
+ 25  import { parseTime } from "helpers/date-parse";
+ 26  import { useTranslation } from "react-i18next";
+ 27  import { IServerConfiguration } from "types/servertypes/serverConfiguration.type";
+ 28  import { formatDateByLanguage, formatToLocalizedTime } from "helpers/converter";
+ 29  import i18n from "locales/i18n";
+ 30  
+ 31  export const SystemAdminPage: FC = () => {
+ 32      const { t } = useTranslation();
+ 33      const [activeTab, setActiveTab] = useState<"logs" | "status" | "config">("logs");
+ 34      const [currentPage, setCurrentPage] = useState(1);
+ 35      const logsPerPage = 10;
+ 36      const [daysOld, setDaysOld] = useState(30);
+ 37      const { mutate: deleteLogs, isPending } = useDeleteOldLogs();
+ 38      const { data: logs = [] } = useSystemLogs();
+ 39      const { data: serverStatus } = useServerStatus();
+ 40      const { data: serverConfig } = useServerConfiguration();
+ 41      const isEnglish = i18n.language === "en";
+ 42      const [configForm, setConfigForm] = useState<IServerConfiguration>({
+ 43          accessSecretKey: serverConfig?.accessSecretKey || "",
+ 44          refreshSecretKey: serverConfig?.refreshSecretKey || "",
+ 45          encryptionKey: serverConfig?.encryptionKey || "",
+ 46      });
+ 47  
+ 48      useEffect(() => {
+ 49          if (serverConfig) {
+ 50              setConfigForm(serverConfig);
+ 51          }
+ 52      }, [serverConfig]);
+ 53  
+ 54      const { mutate: updateConfig, isPending: isSaving } = useSetServerConfiguration();
+ 55  
+ 56      const paginatedLogs = logs.slice((currentPage - 1) * logsPerPage, currentPage * logsPerPage);
+ 57      const totalPages = Math.ceil(logs.length / logsPerPage);
+ 58  
+ 59  
+ 60      return (
+ 61          <MainLayout>
+ 62              <Container>
+ 63                  <Tabs>
+ 64                      <Tab active={activeTab === "logs"} onClick={() => setActiveTab("logs")}>{t("logs.title")}</Tab>
+ 65                      <Tab active={activeTab === "status"} onClick={() => setActiveTab("status")}>{t("server_status.title")}</Tab>
+ 66                      <Tab active={activeTab === "config"} onClick={() => {
+ 67                          setActiveTab("config");
+ 68                      }}>{t("config.title")}</Tab>
+ 69                  </Tabs>
+ 70  
+ 71                  {activeTab === "logs" && (
+ 72                      <>
+ 73                          <SectionTitle>{t("logs.title")}</SectionTitle>
+ 74                          <DeleteLogsBlock>
+ 75                              <DeleteLabel>
+ 76                                  {t("logs.deleteOlderThan")}:
+ 77                                  <input
+ 78                                      type="number"
+ 79                                      min={1}
+ 80                                      value={daysOld}
+ 81                                      onChange={(e) => setDaysOld(Number(e.target.value))}
+ 82                                  />
+ 83                                  {t("logs.days")}
+ 84                              </DeleteLabel>
+ 85                              <DeleteButton onClick={() => deleteLogs(daysOld)} disabled={isPending}>
+ 86                                  {isPending ? t("logs.deleting") : t("logs.deleteButton")}
+ 87                              </DeleteButton>
+ 88                          </DeleteLogsBlock>
+ 89  
+ 90                          <Table>
+ 91                              <thead>
+ 92                                  <TableRow>
+ 93                                      <TableCell>ID</TableCell>
+ 94                                      <TableCell>{t("logs.time")}</TableCell>
+ 95                                      <TableCell>{t("logs.message")}</TableCell>
+ 96                                  </TableRow>
+ 97                              </thead>
+ 98                              <tbody>
+ 99                                  {paginatedLogs.map((log: ISystemLog, index: number) => (
+100                                      <TableRow key={index}>
+101                                          <TableCell>{log.id || index}</TableCell>
+102                                          <TableCell>{`${formatDateByLanguage(log.createdAt, i18n.language)} -- 
+103                                          ${isEnglish ? formatToLocalizedTime(log.createdAt, i18n.language) : parseTime(log.createdAt)}`}</TableCell>
+104                                          <TableCell>{log.message}</TableCell>
+105                                      </TableRow>
+106                                  ))}
+107                              </tbody>
+108                          </Table>
+109  
+110                          <Pagination>
+111                              {Array.from({ length: totalPages }).map((_, i) => (
+112                                  <button
+113                                      key={i}
+114                                      onClick={() => setCurrentPage(i + 1)}
+115                                      disabled={currentPage === i + 1}
+116                                  >
+117                                      {i + 1}
+118                                  </button>
+119                              ))}
+120                          </Pagination>
+121                      </>
+122                  )}
+123  
+124                  {activeTab === "status" && (
+125                      <StatusBlock>
+126                          <SectionTitle>{t("server_status.title")}</SectionTitle>
+127                          <p>{t("server_status.cpu")}: {serverStatus?.cpuUsagePercent || "—"}%</p>
+128                          <p>{t("server_status.ram")}: {serverStatus?.memoryUsageMB || "—"} MB</p>
+129                          <p>{t("server_status.uptime")}: {serverStatus?.uptime || "—"}</p>
+130                      </StatusBlock>
+131                  )}
+132  
+133                  {activeTab === "config" && (
+134                      <ConfigBlock>
+135                          <SectionTitle>{t("server_config.configuration")}</SectionTitle>
+136  
+137                          <Form onSubmit={(e) => {
+138                              e.preventDefault();
+139                              updateConfig(configForm);
+140                          }}>
+141                              <FormGroup>
+142                                  <Label>{t("server_config.accessSecretKey")}</Label>
+143                                  <Input
+144                                      type="text"
+145                                      value={configForm.accessSecretKey}
+146                                      onChange={(e) => setConfigForm(prev => ({ ...prev, accessSecretKey: e.target.value }))}
+147                                  />
+148                              </FormGroup>
+149  
+150                              <FormGroup>
+151                                  <Label>{t("server_config.refreshSecretKey")}</Label>
+152                                  <Input
+153                                      type="text"
+154                                      value={configForm.refreshSecretKey}
+155                                      onChange={(e) => setConfigForm(prev => ({ ...prev, refreshSecretKey: e.target.value }))}
+156                                  />
+157                              </FormGroup>
+158  
+159                              <FormGroup>
+160                                  <Label>{t("server_config.encryptionKey")}</Label>
+161                                  <Input
+162                                      type="text"
+163                                      value={configForm.encryptionKey}
+164                                      onChange={(e) => setConfigForm(prev => ({ ...prev, encryptionKey: e.target.value }))}
+165                                  />
+166                              </FormGroup>
+167  
+168                              <SubmitButton type="submit" disabled={isSaving}>
+169                                  {isSaving ? t("saving") : t("save")}
+170                              </SubmitButton>
+171                          </Form>
+172                      </ConfigBlock>
+173                  )}
+174              </Container>
+175          </MainLayout>
+176      );
+177  };
+
+В.3 Адміністрування бізнес-логіки системи. Локальний адміністратор.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab3/pzpi-22-3-protsenko-artem-lab3/src/pages/LocalAdminPage/local-admin.page.tsx
+
+ 1  import { FC } from "react";
+ 2  import { MainLayout } from "@ui/layout/layout";
+ 3  import { useTranslation } from "react-i18next";
+ 4  import { useUsers, useChangeUserRole } from "./hooks/useLocalAdmin";
+ 5  import {
+ 6      Container,
+ 7      Title,
+ 8      Table,
+ 9      TableRow,
+10      TableCell,
+11      Select,
+12      Message,
+13  } from "./local-admin.style";
+14  import { IUser } from "types/user/user.types";
+15  import { useAuthStore } from "@pages/LoginPage/store/auth-store";
+16  import { UserRole } from "types/user/userRole.enum";
+17  import { mapRoleNameToValue } from "helpers/roleMapper";
+18  export const LocalAdminPage: FC = () => {
+19      const { t } = useTranslation();
+20      const { data: users = [], isLoading } = useUsers();
+21      const { mutate: changeRole, isPending } = useChangeUserRole();
+22      const user = useAuthStore(state => state.user);
+23
+24      const handleRoleChange = (userId: string, newRole: string) => {
+25          changeRole({ userId, userRole: Number(newRole) as UserRole });
+26      };
+27
+28      return (
+29          <MainLayout>
+30              <Container>
+31                  <Title>{t("admin.title")}</Title>
+32
+33                  {isLoading ? (
+34                      <Message>Loading...</Message>
+35                  ) : (
+36                      <Table>
+37                          <thead>
+38                              <TableRow>
+39                                  <TableCell>Email</TableCell>
+40                                  <TableCell>{t("admin.role")}</TableCell>
+41                              </TableRow>
+42                          </thead>
+43                          <tbody>
+44                              {users
+45                                  .filter((u) => u.userId !== user?.userId)
+46                                  .map((user: IUser) => (
+47                                      <TableRow key={user.userId}>
+48                                          <TableCell>{user.email}</TableCell>
+49                                          <TableCell>
+50                                              <Select
+51                                                  value={mapRoleNameToValue(user.userRole)}
+52                                                  onChange={(e) =>
+53                                                      handleRoleChange(user.userId, e.target.value)
+54                                                  }
+55                                                  disabled={isPending}
+56                                              >
+57                                                  <option value={UserRole.User}>
+58                                                      {t("admin.roles.User")}
+59                                                  </option>
+60                                                  <option value={UserRole.Admin}>
+61                                                      {t("admin.roles.Admin")}
+62                                                  </option>
+63                                                  <option value={UserRole.DbAdmin}>
+64                                                      {t("admin.roles.DbAdmin")}
+65                                                  </option>
+66                                                  <option value={UserRole.ApplicationAdmin}>
+67                                                      {t("admin.roles.ApplicationAdmin")}
+68                                                  </option>
+69                                              </Select>
+70                                          </TableCell>
+71                                      </TableRow>
+72                                  ))}
+73                          </tbody>
+74                      </Table>
+75                  )}
+76              </Container>
+77          </MainLayout>
+78      );
+79  };
+
+В.4 Резервне копіювання користувацьких даних.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab3/pzpi-22-3-protsenko-artem-lab3/src/pages/DbAdminPage/db-admin.page.tsx
+
+ 1  import { MainLayout } from "@ui/layout/layout";
+ 2  import { FC, useState } from "react";
+ 3  import { useTranslation } from "react-i18next";
+ 4  import {
+ 5      Section,
+ 6      Title,
+ 7      Label,
+ 8      Input,
+ 9      Button,
+10      StatusText,
+11      Row
+12  } from "./db-admin.style";
+13  import { useBackupData, useDbStatus, useRestoreData } from "./hooks/useAdmin";
+14  import { parseTime } from "helpers/date-parse";
+15  import { formatDateByLanguage, formatToLocalizedTime } from "helpers/converter";
+16  import i18n from "locales/i18n";
+17
+18  export const DbAdminPage: FC = () => {
+19      const { t } = useTranslation();
+20      const { data: dbStatus, refetch } = useDbStatus();
+21      const { mutate: backup } = useBackupData();
+22      const { mutate: restore } = useRestoreData();
+23      const isEnglish = i18n.language === "en";
+24
+25      const [backupPath, setBackupPath] = useState("");
+26      const [restorePath, setRestorePath] = useState("");
+27
+28      return (
+29          <MainLayout>
+30              <Section>
+31                  <Title>{t("dbStatusTitle")}</Title>
+32                  <Row>
+33                      <StatusText>
+34                          {t("dbStatus_isDatabaseConnected")}: {" "}
+35                          {dbStatus?.isDatabaseConnected
+36                              ? dbStatus.isDatabaseConnected === true ? t("connected") : t("not_connected")
+37                              : t("loading")
+38                          }
+39                      </StatusText>
+40                      <StatusText>
+41                          {t("dbStatus_databaseSizeMB")}: {dbStatus?.databaseSizeMB || t("loading")}
+42                      </StatusText>
+43                      <StatusText>
+44                          {t("dbStatus_checkedAt")}:{" "}
+45                          {dbStatus?.checkedAt
+46                              ? `${formatDateByLanguage(dbStatus.checkedAt, i18n.language)} - ${
+47                              isEnglish ? formatToLocalizedTime(dbStatus.checkedAt, i18n.language) : parseTime(dbStatus.checkedAt)}`
+48                              : t("loading")}
+49                      </StatusText>
+50                      <Button onClick={() => refetch()}>{t("refresh")}</Button>
+51                  </Row>
+52              </Section>
+53
+54              <Section>
+55                  <Title>{t("createBackup")}</Title>
+56                  <Label>
+57                      {t("directory")}
+58                      <Input
+59                          type="text"
+60                          value={backupPath}
+61                          onChange={(e) => setBackupPath(e.target.value)}
+62                      />
+63                  </Label>
+64                  <Button onClick={() => backup(backupPath)}>{t("backup")}</Button>
+65              </Section>
+66
+67              <Section>
+68                  <Title>{t("restoreBackup")}</Title>
+69                  <Label>
+70                      {t("directory")}
+71                      <Input
+72                          type="text"
+73                          value={restorePath}
+74                          onChange={(e) => setRestorePath(e.target.value)}
+75                      />
+76                  </Label>
+77                  <Button onClick={() => restore(restorePath)}>{t("restore")}</Button>
+78              </Section>
+79          </MainLayout>
+80      );
+81  };
