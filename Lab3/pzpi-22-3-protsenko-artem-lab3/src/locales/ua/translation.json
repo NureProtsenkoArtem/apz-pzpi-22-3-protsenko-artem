@@ -1,0 +1,166 @@
+{
+    "login": "Увійти",
+    "register": "Реєстрація",
+    "logout": "Вийти",
+    "title": "PetHouse",
+    "error": "Помилка",
+    "welcome": "Вітаємо,",
+    "loading": "Завантаження...",
+    "create_pet": "Додати тварину",
+    "pet_list": "Ваші тварини",
+    "db_admin_panel": "Панель адміністратора БД",
+    "system_admin": "Панель системного адміністратора",
+    "localAdmin": "Панель локального адміністратора",
+    "welcome_card": {
+        "welcome_text": "Вітаємо!",
+        "welcome_text_2": "Раді бачити вас у системі PetHouse!"
+    },
+
+    "btn-register": "Зареєструватись",
+    "email": "Ел. пошта",
+    "password": "Пароль",
+    "name": "Ім'я",
+    "error_all_fields": "Всі поля обовʼязкові",
+    "error_register": "Помилка при реєстрації. Спробуйте ще раз.",
+    "register_success": "Реєстрація успішна!",
+
+    "login_text": "Авторизація",
+    "login_success": "Вхід успішний",
+
+    "user_profile": "Профіль користувача",
+    "role": "Роль",
+    "created_at": "Дата створення",
+
+    "pet_create_title": "Додавання тварини",
+    "petname": "Кличка",
+    "petbreed": "Порода",
+    "pet_created_successfully": "Тварина додана успішно",
+    "petWeight": "Вага",
+    "calories_per_day": "Калорії в день",
+    "activity_level": "Рівень активності",
+    "low_activity": "Низька активність",
+    "medium_activity": "Середня активність",
+    "high_activity":  "Висока активність",
+    "add": "Додати",
+    "health": "Аналіз харчування",
+    "pet_name": "Ім'я тварини:",
+    "pet_type": "Тип тварини:",
+    "pet_weight": "Вага тварини:",
+    "btn_view": "Детальніше",
+    "update": "Оновити",
+    "delete": "Видалити",
+    "edit_pet_label": "Оновити інформацію про тварину",
+    "delete_pet_text": "Ви впевнені, що хочете видалити тварину?",
+    "delete_meal_text": "Ви впевнені, що хочете видалити годування?",
+
+    "meal_history": "Історія годувань",
+    "add_meal": "Додати годування",
+    "date": "Дата",
+    "time": "Час",
+    "meal_type": "Тип корму",
+    "portion_size": "Розмір порції",
+    "status": "Статус",
+    "options": "Дії",
+
+    "add_meal_title": "Додати годування",
+    "portionSize": "Розмір порції",
+    "startTime": "Час початку",
+    "calorificValue": "Калорійність",
+    "adaptiveAdjustment": "Адаптивне регулювання",
+    "foodType": "Тип їжі",
+    "selectType": "Оберіть тип їжі",
+    "types": {
+        "dry": "Сухий",
+        "wet": "Вологий",
+        "natural": "Натуральний"
+    },
+    "isDaily": "Щоденне",
+    "submit": "Додати годування",
+
+    "update_meal_text": "Зміна параметрів годування",
+
+    "dbStatusTitle": "Статус бази даних",
+    "dbStatus_isDatabaseConnected": "Статус підключення",
+    "dbStatus_checkedAt": "Перевірено в",
+    "dbStatus_databaseSizeMB": "Використано пам'яті",
+    "refresh": "Оновити",
+    "createBackup": "Створити резервну копію",
+    "restoreBackup": "Відновити з копії",
+    "directory": "Шлях до каталогу",
+    "backup": "Резервувати",
+    "restore": "Відновити",
+    "connected": "Підключено",
+    "not_connected": "Не підключено",
+    
+    "logs": {
+        "title": "Системні логи",
+        "time": "Час",
+        "message": "Повідомлення",
+        "deleteOlderThan": "Видалити логи старші за",
+        "days": "днів",
+        "deleteButton": "Видалити логи",
+        "deleting": "Видалення..."
+    },
+
+    "server_status": {
+        "title": "Статус сервера",
+        "cpu": "CPU",
+        "ram": "ОЗП",
+        "uptime": "Час безперервної роботи"
+    },
+    "config": {
+        "title": "Конфігурація сервера",
+        "saveBtn": "Зберегти",
+        "saved": "Конфігурацію збережено",
+        "invalidJson": "Некоректний JSON"
+    },
+
+    "server_config": {
+        "configuration": "Конфігурація сервера",
+        "accessSecretKey": "Токен доступу",
+        "refreshSecretKey": "Токен оновлення",
+        "encryptionKey": "Ключ шифрування"
+    },
+
+    "verification": {
+        "title": "Підтвердження електронної пошти",
+        "code": "Код активації",
+        "codePlaceholder": "Введіть код, який ви отримали",
+        "verify": "Підтвердити",
+        "verifying": "Перевіряємо...",
+        "success": "Вашу пошту успішно підтверджено!",
+        "error": "Недійсний або прострочений код. Спробуйте ще раз."
+    },
+    
+    "admin": {
+        "title": "Управління користувачами",
+        "role": "Роль",
+        "changeRole": "Змінити роль",
+        "roles": {
+            "User": "Користувач",
+            "DbAdmin": "Адміністратор БД",
+            "Admin": "Локальний адміністратор",
+            "ApplicationAdmin": "Адміністратор додатку"
+        }
+    },
+
+    "healthAnalysis": {
+        "title": "Аналізи тварини",
+        "add": "Додати аналіз",
+        "loading": "Завантаження...",
+        "type": "Тип",
+        "date": "Дата",
+        "period": "Період",
+        "calories": "Калорії",
+        "recommendations": "Рекомендації",
+        "startDate": "Дата початку",
+        "endDate": "Дата завершення"
+      },
+
+      "createAnalysis": "Створити аналіз",
+    "startDate": "Дата початку",
+    "endDate": "Дата завершення",
+    "confirm": "Підтвердити",
+    "cancel": "Скасувати",
+    "healthAnalysisModalTitle": "Новий аналіз здоров’я"
+}

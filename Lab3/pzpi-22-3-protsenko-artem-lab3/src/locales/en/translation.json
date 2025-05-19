@@ -1,0 +1,168 @@
+{
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "title": "PetHouse",
+    "error": "Error",
+    "welcome": "Welcome,",
+    "loading": "Loading..",
+    "create_pet": "Add pet",
+    "pet_list": "Your pets",
+    "db_admin_panel": "DB Admin panel",
+    "system_admin": "System admin panel",
+    "localAdmin": "Local admin panel",
+    "welcome_card": {
+        "welcome_text": "Welcome!",
+        "welcome_text_2": "It's pleasure to see you in PetHouse system!"
+    },
+
+    "btn-register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "error_all_fields": "All fields required",
+    "error_register": "Registration failed.",
+    "register_success": "Successfully registered!",
+    "login_text": "Login",
+    "login_success": "Auth failed",
+    "user_profile": "User profile",
+    "role": "Role",
+    "created_at": "Created at",
+    "pet_create_title": "Add pet",
+    "pet_created_successfully": "Pet created successfully",
+    "petname": "Pet name",
+    "petbreed": "Pet Breed",
+    "petWeight": "Pet Weight",
+    "calories_per_day": "Calories per day",
+    "activity_level": "Activity level",
+    "low_activity": "Low activity",
+    "medium_activity": "Medium activity",
+    "high_activity": "High activity",
+    "add": "Add",
+    "pet_name": "Pet name:",
+    "pet_type": "Pet type:",
+    "pet_weight": "Pet weight:",
+    "btn_view": "View More",
+    "update": "Update",
+    "delete": "Delete",
+    "health": "Health analysis",
+    "edit_pet_label": "Edit pet information",
+    "delete_pet_text": "Are you sure you want to delete pet?",
+    "delete_meal_text": "Are you sure you want to delete meal?",
+
+    "meal_history": "Meal history",
+    "add_meal": "Add meal",
+    "date": "Date",
+    "time": "Time",
+    "meal_type": "Meal type",
+    "portion_size": "Portion size",
+    "status": "Status",
+    "options": "Options",
+
+    
+
+    "add_meal_title": "Add a Meal",
+    "portionSize": "Portion Size",
+    "startTime": "Start Time",
+    "calorificValue": "Calories",
+    "adaptiveAdjustment": "Adaptive Adjustment",
+    "foodType": "Food Type",
+    "selectType": "Select Food Type",
+    "types": {
+        "dry": "Dry",
+        "wet": "Wet",
+        "natural": "Natural"
+    },
+    "isDaily": "Is Daily",
+    "submit": "Add Meal",
+
+    "update_meal_text": "Change Meal",
+
+    "dbStatusTitle": "Database Status",
+    "dbStatus_isDatabaseConnected": "Is DB connected",
+    "dbStatus_checkedAt": "Checked at",
+    "dbStatus_databaseSizeMB": "DB size",
+    "refresh": "Refresh",
+    "createBackup": "Create Backup",
+    "restoreBackup": "Restore Backup",
+    "directory": "Directory",
+    "backup": "Backup",
+    "restore": "Restore",
+    "connected": "Connected",
+    "not_connected": "Not connected",
+
+    "logs": {
+        "title": "System Logs",
+        "time": "Time",
+        "message": "Message",
+        "deleteOlderThan": "Delete logs older than",
+        "days": "days",
+        "deleteButton": "Delete Logs",
+        "deleting": "Deleting..."
+    },
+    
+    "server_status": {
+        "title": "Server Status",
+        "cpu": "CPU",
+        "ram": "RAM",
+        "uptime": "Uptime"
+    },
+
+    "config": {
+        "title": "Server Configuration",
+        "saveBtn": "Save",
+        "saved": "Configuration saved",
+        "invalidJson": "Invalid JSON format"
+    },
+
+    "server_config": {
+        "configuration": "Server Configuration",
+        "accessSecretKey": "Access Secret Key",
+        "refreshSecretKey": "Refresh Secret Key",
+        "encryptionKey": "Encryption Key"
+    },
+    "saving": "Saving...",
+    "save": "Save",
+
+    "verification": {
+        "title": "Verify your email",
+        "code": "Activation Code",
+        "codePlaceholder": "Enter the code you received",
+        "verify": "Verify",
+        "verifying": "Verifying...",
+        "success": "Your email has been successfully verified!",
+        "error": "Invalid or expired code. Please try again."
+    },
+    
+    "admin": {
+        "title": "User Management",
+        "role": "Role",
+        "changeRole": "Change role",
+        "roles": {
+            "User": "User",
+            "DbAdmin": "DB Admin",
+            "Admin": "Local Admin",
+            "ApplicationAdmin": "Application Admin"
+        }
+    },
+
+    "healthAnalysis": {
+        "title": "Pet Health Analyses",
+        "add": "Add Analysis",
+        "loading": "Loading...",
+        "type": "Type",
+        "date": "Date",
+        "period": "Period",
+        "calories": "Calories",
+        "recommendations": "Recommendations",
+        "startDate": "Start Date",
+        "endDate": "End Date"
+    },
+
+    "createAnalysis": "Create Analysis",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "healthAnalysisModalTitle": "New Health Analysis"
+}
