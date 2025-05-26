@@ -1,0 +1,124 @@
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_meal"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <TextView
+            android:id="@+id/tvTitlePortionSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/portion_size"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etPortionSize"
+            android:hint="@string/portion_size"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etMealStatus"
+            android:hint="@string/meal_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/etCaloriesConsumed"
+            android:hint="@string/calories_consumed"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvTitleFoodType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/food_type"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etFoodType"
+            android:hint="@string/food_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvTitleCalorificValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calorific_value"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etCalorificValue"
+            android:hint="@string/calorific_value"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <Button
+            android:id="@+id/btnPickDate"
+            android:text="@string/chose_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnPickTime"
+            android:text="@string/chose_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvSelectedDateTime"
+            android:text="@string/date_and_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp" />
+
+        <CheckBox
+            android:id="@+id/cbIsDaily"
+            android:text="@string/is_daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/cbAdaptiveAdjustment"
+            android:text="@string/adaptive_adjustment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:text="@string/update_meal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>
+</layout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_name"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etPetName"
+            android:hint="@string/pet_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTitleBreed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pet_breed"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etPetBreed"
+            android:hint="@string/pet_breed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTitleWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/weight"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etPetWeight"
+            android:hint="@string/weight"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTitleCaloriesPerDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calories_per_day"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <EditText
+            android:id="@+id/etCaloriesPerDay"
+            android:hint="@string/calories_per_day"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTitleActivityLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/activity_level"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:padding="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerActivityLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnUpdatePet"
+            android:text="@string/update_pet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
+</layout>

@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_catalog"
+        android:icon="@drawable/ic_pet"
+        android:title="@string/your_pets"
+        android:visible="false"/>
+
+    <item
+        android:id="@+id/menu_login"
+        android:icon="@drawable/ic_login"
+        android:title="@string/login"/>
+
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile"
+        android:visible="false"/>
+    <item
+        android:id="@+id/menu_add_course"
+        android:icon="@drawable/ic_add_course"
+        android:title="@string/add_pet"
+        android:visible="false"/>
+
+
+    <item
+        android:id="@+id/menu_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout"
+        android:visible="false"/>
+</menu>

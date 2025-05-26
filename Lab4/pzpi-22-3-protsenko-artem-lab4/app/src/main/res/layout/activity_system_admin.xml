@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".SystemAdminActivity">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:padding="16dp">
+
+            <!-- Server Status -->
+            <TextView
+                android:id="@+id/textServerStatusTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/server_status"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/textStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/textUptime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/textCpu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/textMemory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Server Configuration -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/server_configuration"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editAccessKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/access_secret_key"
+                android:layout_marginBottom="8dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"/>
+
+            <EditText
+                android:id="@+id/editRefreshKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/refresh_secret_key"
+                android:layout_marginBottom="8dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"/>
+
+            <EditText
+                android:id="@+id/editEncryptionKey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/encryption_key"
+                android:layout_marginBottom="16dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"/>
+
+            <Button
+                android:id="@+id/btnSaveConfig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_configuration"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Delete Old Logs -->
+            <EditText
+                android:id="@+id/editDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/delete_logs_older_than_days"
+                android:inputType="number"
+                android:layout_marginBottom="8dp"
+                android:background="#FFFFFF"
+                android:padding="12dp"
+                android:elevation="2dp"/>
+
+            <Button
+                android:id="@+id/btnDeleteLogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_old_logs"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- Logs -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/system_logs"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerLogs"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="#FFFFFF"
+                android:elevation="2dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
