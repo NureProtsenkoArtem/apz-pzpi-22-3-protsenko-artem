@@ -1,0 +1,546 @@
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+до лабораторної роботи №4 з дисципліни
+«Архітектура програмного забезпечення»
+на тему: «РОЗРОБКА МОБІЛЬНОГО КЛІЄНТА СИСТЕМИ»
+
+
+
+
+
+
+Виконав
+ст. гр. ПЗПІ-22-3
+Проценко Артем Романович
+
+Перевірив
+ст. викладач кафедри ПІ
+Сокорчук Ігор Петрович
+
+
+
+
+
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+№	Дата	Версія звіту	Опис змін та виправлень
+1	18.05.2025	0.1	Створено розділ «Історія змін», створено титульний лист. Додано базову структуру серверної частини для доробки
+2	19.05.2025	0.1	Створено розділ «Опис виконаної роботи» 
+3	22.05.2025	0.1	Створено додаток Б, В.
+4	23.05.2025	0.1	Створено відеозапис та наведено в додатку А.
+5	25.05.2025	0.1	Створено розділ «Висновки»
+
+2 ХІД РОБОТИ
+
+Метою даної лабораторної роботи є розробка мобільної частини програмної системи.
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+До виконаної роботи було створено відеозвіт, посилання на який наведено у додатку А.
+Усі графічні дані наведені у додатку Б.
+У ході реалізації мобільного додатку було виконано всебічне дослідження та впровадження ключових функціональних компонентів програмної системи, спрямованої на автоматизацію догляду за домашніми тваринами. Основною метою лабораторної роботи стало створення зручного та надійного інструменту, який дозволяє користувачам здійснювати повноцінне керування інформацією про тварину, процесами її годування та моніторингом стану здоров’я.
+У процесі розробки центральне місце було відведено механізмам взаємодії користувача з основними сутностями предметної області, зокрема тваринами та подіями годування. Було реалізовано інтерфейси для додавання нових тварин, редагування їхніх властивостей, включаючи породу, вагу, рівень активності, а також визначення добової калорійної норми. Крім того, було забезпечено можливість створення та редагування подій годування, що дозволяє користувачеві детально налаштовувати процес харчування відповідно до індивідуальних потреб кожної тварини.
+Наступним кроком стало впровадження компонентів бізнес-логіки, які забезпечують адаптивність процесів, зокрема додавання адаптивного харчування тварини на основі параметрів тварини. Додатково було реалізовано модуль аналізу здоров’я, що базується на статистичних даних про поведінку тварини та результати попередніх годувань.
+У структурі додатку було також передбачено окремий інтерфейс для адміністратора бази даних. Було реалізовано функціонал перегляду поточного стану бази, зокрема кількість записів, останні оновлення та взаємозв’язки між сутностями. Забезпечено можливість створення резервних копій та виконання відновлення даних.
+Для підвищення стабільності та керованості системи було реалізовано окремий функціональний блок для системного адміністратора, що надає змогу аналізувати системні події, переглядати стан сервера в режимі реального часу та змінювати конфігураційні параметри.
+З метою підтримки багаторівневої моделі керування доступом було впроваджено можливість зміни ролей користувачів локальним адміністратором.
+Особливу увагу було приділено аспектам локалізації та інтерналізації. У додатку реалізовано підтримку декількох мов, з урахуванням особливостей форматування часу, чисел, величин.
+Програмний код окремих компонентів наведено в додатку В.
+ 
+ВИСНОВКИ
+
+В результаті виконання лабораторної роботи була розроблена мобільна частина програмної системи для автоматизації годування домашніх тварин. Було впроваджено користувальницьких інтерфейс для виконання основних функцій, функцій бізнес логіки, функцій адміністрування системи. Було впроваджено локалізацію та інтернаціоналізацію клієнтської частини.
+ 
+ДОДАТОК А
+Відеозапис
+
+Відеозапис презентації результатів лабораторної роботи: https://youtu.be/6pVj1JMOaqE
+
+Хронологічний опис відеозапису:
+00:00 - Привітання. Доповідач вітається, розповідає про загальну мету лабораторної роботи та коротко окреслює, які функції були реалізовані.
+00:17 - Основні функції програмної системи. Розглядається функції додававання та редагування тварини, додавання та редагування та видалення годування.
+02:40 - Функції бізнес логіки програмної системи. Розглядається функції створення адаптивного годування тварини та аналізу здоров’я тварини на основі харчових звичок.
+04:54 - Функції адміністратора БД. Розглядається функції перегляду стану бази даних, створення резервної копії БД та відновлення за допомогою резервної копії.
+07:14 - Функції системного адміністратора. Розглядається функції перегляду системних подій, перегляду стану сервера та зміна конфігурації системи.
+09:04 -  Функції локального адміністратора. Розглядається функції зміни ролей.
+10:06 - Функції локалізації та інтерналізація. Розглядається результати впровадження різних мов, локалізації часу та конвертування величин.
+11:17 - Висновки. Підбивається підсумок виконаної роботи.
+ 
+ДОДАТОК Б
+Графічні матеріали
+
+ 
+Рисунок Б.1 – ER-діаграма даних
+ 
+Рисунок Б.2 – Структура бази даних
+ 
+Рисунок Б.3 – UML-діаграма прецедентів
+ 
+ДОДАТОК В
+Програмний код
+
+В.1 Математична обробка прикладних даних.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab4/pzpi-22-3-protsenko-artem-lab4/app/src/main/java/com/pethouse/pethousemobile/PetDetailsActivity.kt
+
+  1  package com.pethouse.pethousemobile
+  2  
+  3  import android.annotation.SuppressLint
+  4  import android.content.Intent
+  5  import android.content.SharedPreferences
+  6  import android.os.Bundle
+  7  import android.util.Log
+  8  import android.widget.Button
+  9  import android.widget.LinearLayout
+ 10  import android.widget.TextView
+ 11  import android.widget.Toast
+ 12  import androidx.appcompat.app.AppCompatActivity
+ 13  import com.bumptech.glide.Glide
+ 14  import com.pethouse.pethousemobile.databinding.ActivityMainBinding
+ 15  import com.pethouse.pethousemobile.databinding.ActivityPetCatalogBinding
+ 16  import com.pethouse.pethousemobile.databinding.ActivityPetDetailsBinding
+ 17  import com.pethouse.pethousemobile.network.Meal.MealRepository
+ 18  import com.pethouse.pethousemobile.network.Pet.PetRepository
+ 19  import com.pethouse.pethousemobile.network.RetrofitClient
+ 20  import com.pethouse.pethousemobile.utils.DateTimeUtils
+ 21  import com.pethouse.pethousemobile.utils.MathUtils
+ 22  import kotlinx.coroutines.CoroutineScope
+ 23  import kotlinx.coroutines.Dispatchers
+ 24  import kotlinx.coroutines.launch
+ 25  
+ 26  class PetDetailsActivity : BaseActivity() {
+ 27  
+ 28      private lateinit var petId: String
+ 29      private lateinit var petRepository: PetRepository
+ 30      private lateinit var mealRepository: MealRepository
+ 31      private lateinit var binding: ActivityPetDetailsBinding
+ 32  
+ 33      override fun onCreate(savedInstanceState: Bundle?) {
+ 34          super.onCreate(savedInstanceState)
+ 35  
+ 36          binding = ActivityPetDetailsBinding.inflate(layoutInflater)
+ 37          setActivityContent(binding.root)
+ 38  
+ 39          petId = intent.getStringExtra("PET_ID") ?: return
+ 40          petRepository = PetRepository(RetrofitClient.petService)
+ 41          mealRepository = MealRepository(RetrofitClient.mealService)
+ 42          sharedPref = getSharedPreferences("AuthPrefs", MODE_PRIVATE)
+ 43          val token = sharedPref.getString("ACCESS_TOKEN", null)
+ 44  
+ 45          val btnAddMeal = findViewById<Button>(R.id.btnAddMeal)
+ 46          val btnEditPet = findViewById<Button>(R.id.btnEditPet)
+ 47          val btnHealth = findViewById<Button>(R.id.btnHealthAnalysises)
+ 48  
+ 49          btnAddMeal.setOnClickListener {
+ 50              val intent = Intent(this, AddMealActivity::class.java)
+ 51              intent.putExtra("PET_ID", petId)
+ 52              startActivity(intent)
+ 53          }
+ 54  
+ 55          btnEditPet.setOnClickListener {
+ 56              val intent = Intent(this, EditPetActivity::class.java)
+ 57              intent.putExtra("PET_ID", petId)
+ 58              startActivity(intent)
+ 59          }
+ 60  
+ 61          btnHealth.setOnClickListener {
+ 62              val intent = Intent(this, HealthAnalysesActivity::class.java)
+ 63              intent.putExtra("PET_ID", petId)
+ 64              startActivity(intent)
+ 65          }
+ 66  
+ 67  
+ 68          loadPetInfo(token)
+ 69          loadPetMeals()
+ 70      }
+ 71  
+ 72      override fun onResume() {
+ 73          super.onResume()
+ 74          val token = sharedPref.getString("ACCESS_TOKEN", null)
+ 75          loadPetInfo(token)
+ 76          loadPetMeals()
+ 77      }
+ 78  
+ 79      @SuppressLint("SetTextI18n")
+ 80      private fun loadPetInfo(token: String?) {
+ 81          CoroutineScope(Dispatchers.IO).launch {
+ 82              val pet = petRepository.getPetById(petId, "Bearer ${token}")
+ 83              val currentLocale = resources.configuration.locales[0]
+ 84              val isEnglish = currentLocale.language == "en"
+ 85  
+ 86              runOnUiThread {
+ 87                  if (pet != null) {
+ 88                      findViewById<TextView>(R.id.tvPetName).text = pet.petName
+ 89                      findViewById<TextView>(R.id.tvPetType).text = pet.petType
+ 90  
+ 91                      val weightText = if (isEnglish) {
+ 92                          val pounds = MathUtils.kgToPounds(pet.petWeight.toDouble())
+ 93                          "${getString(R.string.weight)}: %.2f lbs".format(pounds)
+ 94                      } else {
+ 95                          "${getString(R.string.weight)}: ${pet.petWeight} кг"
+ 96                      }
+ 97                      findViewById<TextView>(R.id.tvPetWeight).text = weightText
+ 98  
+ 99                      findViewById<TextView>(R.id.tvCaloriesPerDay).text =
+100                          "${getString(R.string.calories_per_day)}: ${pet.caloriesPerDay}"
+101                      findViewById<TextView>(R.id.tvActivityLevel).text =
+102                          "${getString(R.string.activity_level)}: ${pet.activityLevel}"
+103                  }
+104              }
+105          }
+106      }
+107  
+108  
+109      @SuppressLint("SetTextI18n")
+110      private fun loadPetMeals() {
+111          CoroutineScope(Dispatchers.IO).launch {
+112              val meals = mealRepository.getMealsByPetId(petId)
+113              val currentLocale = resources.configuration.locales[0]
+114              val isEnglish = currentLocale.language == "en"
+115  
+116              runOnUiThread {
+117                  val container = findViewById<LinearLayout>(R.id.llMealsContainer)
+118                  container.removeAllViews()
+119                  meals.forEach { meal ->
+120                      val view = layoutInflater.inflate(R.layout.item_meal, container, false)
+121                      view.findViewById<TextView>(R.id.tvFoodType).text = meal.foodType
+122  
+123                      val formattedDateTime = if (isEnglish) {
+124                          DateTimeUtils.formatToUSDateTime(meal.startTime)
+125                      } else {
+126                          DateTimeUtils.formatIsoDateTime(meal.startTime)
+127                      }
+128  
+129                      val portionSizeText = if (isEnglish) {
+130                          val oz = MathUtils.gramsToOunces(meal.portionSize.toDouble())
+131                          "${getString(R.string.portion_size)}: %.2f oz".format(oz)
+132                      } else {
+133                          "${getString(R.string.portion_size)}: ${meal.portionSize} г"
+134                      }
+135  
+136                      view.findViewById<TextView>(R.id.tvTitleCalorificValue).text =
+137                          "${getString(R.string.calorific_value)}: ${meal.calorificValue}"
+138                      view.findViewById<TextView>(R.id.tvPortionSize).text = portionSizeText
+139                      view.findViewById<TextView>(R.id.tvMealTime).text =
+140                          "${getString(R.string.meal_start_time)}: $formattedDateTime"
+141                      view.findViewById<TextView>(R.id.tvCaloriesConsumed).text =
+142                          "${getString(R.string.calories_consumed)}: ${meal.caloriesConsumed}"
+143                      view.findViewById<TextView>(R.id.tvMealStatus).text =
+144                          "${getString(R.string.meal_status)}: ${meal.mealStatus}"
+145  
+146                      view.findViewById<Button>(R.id.btnEditMeal).setOnClickListener {
+147                          val intent = Intent(this@PetDetailsActivity, EditMealActivity::class.java)
+148                          intent.putExtra("MEAL_ID", meal.mealId)
+149                          startActivity(intent)
+150                      }
+151  
+152                      view.findViewById<Button>(R.id.btnDeleteMeal).setOnClickListener {
+153                          CoroutineScope(Dispatchers.IO).launch {
+154                              val token = sharedPref.getString("ACCESS_TOKEN", null)
+155                              if (token != null) {
+156                                  val success = mealRepository.deleteMealById(meal.mealId, "Bearer $token")
+157                                  runOnUiThread {
+158                                      if (success) {
+159                                          loadPetMeals()
+160                                      } else {
+161                                          Toast.makeText(
+162                                              this@PetDetailsActivity,
+163                                              getString(R.string.error),
+164                                              Toast.LENGTH_SHORT
+165                                          ).show()
+166                                      }
+167                                  }
+168                              }
+169                          }
+170                      }
+171  
+172                      container.addView(view)
+173                  }
+174              }}}}
+
+В.2 Адміністрування бізнес-логіки системи. Системний адміністратор.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab4/pzpi-22-3-protsenko-artem-lab4/app/src/main/java/com/pethouse/pethousemobile/SystemAdminActivity.kt
+  1  package com.pethouse.pethousemobile
+  2  
+  3  import android.annotation.SuppressLint
+  4  import android.os.Bundle
+  5  import android.widget.Toast
+  6  import androidx.appcompat.app.AppCompatActivity
+  7  import androidx.lifecycle.lifecycleScope
+  8  import androidx.recyclerview.widget.LinearLayoutManager
+  9  import com.pethouse.pethousemobile.adapters.LogsAdapter
+ 10  import com.pethouse.pethousemobile.databinding.ActivityLocalAdminBinding
+ 11  import com.pethouse.pethousemobile.databinding.ActivitySystemAdminBinding
+ 12  import com.pethouse.pethousemobile.models.Admin.ServerConfig
+ 13  import com.pethouse.pethousemobile.network.Admin.AdminRepository
+ 14  import com.pethouse.pethousemobile.network.RetrofitClient
+ 15  import kotlinx.coroutines.launch
+ 16  
+ 17  class SystemAdminActivity : BaseActivity() {
+ 18  
+ 19      private lateinit var binding: ActivitySystemAdminBinding
+ 20      private lateinit var repository: AdminRepository
+ 21  
+ 22      override fun onCreate(savedInstanceState: Bundle?) {
+ 23          super.onCreate(savedInstanceState)
+ 24          binding = ActivitySystemAdminBinding.inflate(layoutInflater)
+ 25          setActivityContent(binding.root)
+ 26  
+ 27  
+ 28          repository = AdminRepository(RetrofitClient.adminService)
+ 29  
+ 30          binding.recyclerLogs.layoutManager = LinearLayoutManager(this)
+ 31  
+ 32          loadServerStatus()
+ 33          loadConfiguration()
+ 34          loadLogs()
+ 35  
+ 36          binding.btnSaveConfig.setOnClickListener {
+ 37              saveConfig()
+ 38          }
+ 39  
+ 40          binding.btnDeleteLogs.setOnClickListener {
+ 41              val days = binding.editDays.text.toString().toIntOrNull()
+ 42              if (days != null) {
+ 43                  deleteOldLogs(days)
+ 44              } else {
+ 45                  Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show()
+ 46              }
+ 47          }
+ 48      }
+ 49  
+ 50      @SuppressLint("SetTextI18n")
+ 51      private fun loadServerStatus() {
+ 52          lifecycleScope.launch {
+ 53              try {
+ 54                  val status = repository.getServerStatus()
+ 55                  binding.textStatus.text = "${getString(R.string.online)}: ${status.isAlive}"
+ 56                  binding.textUptime.text = "${getString(R.string.uptime)}: ${status.uptime}"
+ 57                  binding.textCpu.text = "${getString(R.string.cpu)}: ${status.cpuUsagePercent}%"
+ 58                  binding.textMemory.text = "${getString(R.string.memory)}: ${status.memoryUsageMB} MB"
+ 59              } catch (e: Exception) {
+ 60                  Toast.makeText(this@SystemAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+ 61              }
+ 62          }
+ 63      }
+ 64  
+ 65      private fun loadConfiguration() {
+ 66          lifecycleScope.launch {
+ 67              try {
+ 68                  val config = repository.getServerConfiguration()
+ 69                  binding.editAccessKey.setText(config.accessSecretKey)
+ 70                  binding.editRefreshKey.setText(config.refreshSecretKey)
+ 71                  binding.editEncryptionKey.setText(config.encryptionKey)
+ 72              } catch (e: Exception) {
+ 73                  Toast.makeText(this@SystemAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+ 74              }
+ 75          }
+ 76      }
+ 77  
+ 78      private fun saveConfig() {
+ 79          val config = ServerConfig(
+ 80              accessSecretKey = binding.editAccessKey.text.toString(),
+ 81              refreshSecretKey = binding.editRefreshKey.text.toString(),
+ 82              encryptionKey = binding.editEncryptionKey.text.toString()
+ 83          )
+ 84  
+ 85          lifecycleScope.launch {
+ 86              try {
+ 87                  repository.updateServerConfiguration(config)
+ 88                  Toast.makeText(this@SystemAdminActivity, getString(R.string.config_saved), Toast.LENGTH_SHORT).show()
+ 89              } catch (e: Exception) {
+ 90                  Toast.makeText(this@SystemAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+ 91              }
+ 92          }
+ 93      }
+ 94  
+ 95      private fun loadLogs() {
+ 96          lifecycleScope.launch {
+ 97              try {
+ 98                  val logs = repository.getSystemLogs()
+ 99                  val adapter = LogsAdapter(logs)
+100                  binding.recyclerLogs.adapter = adapter
+101              } catch (e: Exception) {
+102                  Toast.makeText(this@SystemAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+103              }
+104          }
+105      }
+106  
+107      private fun deleteOldLogs(days: Int) {
+108          lifecycleScope.launch {
+109              try {
+110                  repository.deleteOldLogs(days)
+111                  Toast.makeText(this@SystemAdminActivity, getString(R.string.old_logs_delete), Toast.LENGTH_SHORT).show()
+112                  loadLogs()
+113              } catch (e: Exception) {
+114                  Toast.makeText(this@SystemAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+115              }
+116          }
+117      }
+118  }
+
+В.3 Адміністрування бізнес-логіки системи. Локальний адміністратор.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab4/pzpi-22-3-protsenko-artem-lab4/app/src/main/java/com/pethouse/pethousemobile/LocalAdminActivity.kt
+
+ 1  package com.pethouse.pethousemobile
+ 2  
+ 3  import android.content.SharedPreferences
+ 4  import android.os.Bundle
+ 5  import android.widget.Toast
+ 6  import androidx.appcompat.app.AppCompatActivity
+ 7  import androidx.lifecycle.lifecycleScope
+ 8  import androidx.recyclerview.widget.LinearLayoutManager
+ 9  import com.pethouse.pethousemobile.adapters.UserAdapter
+10  import com.pethouse.pethousemobile.databinding.ActivityDbAdminBinding
+11  import com.pethouse.pethousemobile.databinding.ActivityLocalAdminBinding
+12  import com.pethouse.pethousemobile.network.Admin.AdminRepository
+13  import com.pethouse.pethousemobile.network.RetrofitClient
+14  import com.pethouse.pethousemobile.network.User.UserRepository
+15  import kotlinx.coroutines.launch
+16  
+17  class LocalAdminActivity : BaseActivity() {
+18  
+19      private lateinit var binding: ActivityLocalAdminBinding
+20      private lateinit var userRepository: UserRepository
+21      private lateinit var adminRepository: AdminRepository
+22      private lateinit var adapter: UserAdapter
+23  
+24  
+25      override fun onCreate(savedInstanceState: Bundle?) {
+26          super.onCreate(savedInstanceState)
+27          binding = ActivityLocalAdminBinding.inflate(layoutInflater)
+28          setActivityContent(binding.root)
+29  
+30          sharedPref = getSharedPreferences("AuthPrefs", MODE_PRIVATE)
+31          val token = sharedPref.getString("ACCESS_TOKEN", null)
+32  
+33          userRepository = UserRepository(RetrofitClient.userService)
+34          adminRepository = AdminRepository(RetrofitClient.adminService)
+35  
+36          adapter = UserAdapter { userId, newRole ->
+37              updateUserRole(userId, newRole, token)
+38          }
+39          binding.userRecyclerView.layoutManager = LinearLayoutManager(this)
+40          binding.userRecyclerView.adapter = adapter
+41  
+42          lifecycleScope.launch {
+43              try {
+44                  val users = userRepository.fetchUsers(token)
+45                  adapter.submitList(users)
+46              } catch (e: Exception) {
+47              }
+48          }
+49      }
+50  
+51      private fun updateUserRole(userId: String, newRole: String,token: String?) {
+52          lifecycleScope.launch {
+53              try {
+54                  adminRepository.changeUserRole(userId, newRole, token)
+55                  Toast.makeText(this@LocalAdminActivity, "Role updated", Toast.LENGTH_SHORT).show()
+56              } catch (e: Exception) {
+57                  Toast.makeText(this@LocalAdminActivity, "Update failed", Toast.LENGTH_SHORT).show()
+58              }
+59          }
+60      }
+61  }
+
+В.4 Резервне копіювання користувацьких даних.
+
+GitHub репозиторій: https://github.com/NureProtsenkoArtem/apz-pzpi-22-3-protsenko-artem/blob/main/Lab4/pzpi-22-3-protsenko-artem-lab4/app/src/main/java/com/pethouse/pethousemobile/DbAdminActivity.kt
+
+1  package com.pethouse.pethousemobile
+ 2  
+ 3  import android.annotation.SuppressLint
+ 4  import android.os.Bundle
+ 5  import android.util.Log
+ 6  import android.widget.Toast
+ 7  import androidx.lifecycle.lifecycleScope
+ 8  import com.pethouse.pethousemobile.databinding.ActivityDbAdminBinding
+ 9  import com.pethouse.pethousemobile.network.Admin.AdminRepository
+10  import com.pethouse.pethousemobile.network.RetrofitClient
+11  import com.pethouse.pethousemobile.utils.DateTimeUtils
+12  import com.pethouse.pethousemobile.utils.DateTimeUtils.formatIsoDateTime
+13  import kotlinx.coroutines.launch
+14  import java.util.Locale
+15  
+16  class DbAdminActivity : BaseActivity() {
+17  
+18      private lateinit var binding: ActivityDbAdminBinding
+19      private lateinit var repository: AdminRepository
+20  
+21      override fun onCreate(savedInstanceState: Bundle?) {
+22          super.onCreate(savedInstanceState)
+23          binding = ActivityDbAdminBinding.inflate(layoutInflater)
+24          setActivityContent(binding.root)
+25          repository = AdminRepository(RetrofitClient.adminService)
+26  
+27          loadDbStatus()
+28  
+29          binding.buttonBackup.setOnClickListener {
+30              val path = binding.editBackupPath.text.toString()
+31              if (path.isNotBlank()) createBackup(path)
+32          }
+33  
+34          binding.buttonRestore.setOnClickListener {
+35              val path = binding.editRestorePath.text.toString()
+36              if (path.isNotBlank()) restoreDb(path)
+37          }
+38      }
+39  
+40      @SuppressLint("SetTextI18n")
+41      private fun loadDbStatus() {
+42          lifecycleScope.launch {
+43              try {
+44                  val status = repository.getStatus()
+45                  val currentLocale = resources.configuration.locales[0]
+46                  val isEnglish = currentLocale.language == "en"
+47  
+48                  val formattedCheckedAt = if (isEnglish) {
+49                      DateTimeUtils.formatToUSDateTime(status.checkedAt)
+50                  } else {
+51                      formatIsoDateTime(status.checkedAt)
+52                  }
+53  
+54                  binding.textDbDetails.text = """
+55                      ${getString(R.string.connection)}: ${if (status.isDatabaseConnected) getString(R.string.success) else getString(R.string.error)}
+56                      ${getString(R.string.db_size)}: ${status.databaseSizeMB} MB
+57                      ${getString(R.string.checked)}: $formattedCheckedAt
+58                  """.trimIndent()
+59              } catch (e: Exception) {
+60                  binding.textDbDetails.text = getString(R.string.error)
+61              }
+62          }
+63      }
+64  
+65      private fun createBackup(path: String) {
+66          lifecycleScope.launch {
+67              try {
+68                  repository.createBackup(path)
+69                  Toast.makeText(this@DbAdminActivity, getString(R.string.backup_created), Toast.LENGTH_SHORT).show()
+70              } catch (e: Exception) {
+71                  Toast.makeText(this@DbAdminActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
+72              }
+73          }
+74      }
+75  
+76      private fun restoreDb(path: String) {
+77          lifecycleScope.launch {
+78              try {
+79                  repository.restoreDb(path)
+80                  Toast.makeText(this@DbAdminActivity, getString(R.string.restore_created), Toast.LENGTH_SHORT).show()
+81              } catch (e: Exception) {
+82                  Toast.makeText(this@DbAdminActivity, "${getString(R.string.error)} ${e.message}", Toast.LENGTH_SHORT).show()
+83                  Log.e("restore", "${e.message}")
+84              }
+85          }
+86      }
+87  }
